@@ -209,13 +209,12 @@
 
                     </div>
                     <?php 
-                                if ($i !== 2) {
-                                    ?>
-
-                    <div class="bp-line"></div>
+                        if ($i !== 2) {
+                    ?>
+                        <div class="bp-line"></div>
                     <?php
-                                }
-                            ?>
+                        }
+                        ?>
                     <?php
                         }
                     ?>
@@ -424,8 +423,6 @@
         <div class="d-flex">
             <div class="btn bp-btn btn-primary mt-40">View all</div>
         </div>
-
-
     </div>
 </div>
 
