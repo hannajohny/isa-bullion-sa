@@ -16,7 +16,7 @@
                 <p><?php the_field('hero_description') ?></p>
                 <div class="row mt-40">
                     <div class="col-4">
-                        <button class="btn bp-btn btn-primary">Open account</button>
+                        <button class="btn bp-btn btn-secondary">Open account</button>
                     </div>
                     <div class="col-4">
                         <?php 

@@ -71,3 +71,64 @@ function wpml_language_switcher() {
     }
 }
 }
+
+function disable_new_posts_for_nav_menu() {
+  $post_type = 'nav-menu'; // Replace with your custom post type
+  $count_posts = wp_count_posts($post_type);
+
+  $published_posts = $count_posts->publish;
+
+  if ($published_posts > 1) {
+      // Add custom CSS to hide the 'Add New' button
+      add_action('admin_head', function() use ($post_type) {
+          global $typenow;
+          if ($typenow == $post_type) {
+            echo '<style type="text/css">
+            .post-type-nav-menu .page-title-action { display: none; }
+        </style>';
+          }
+      });
+
+      // Remove 'Add New' from the Admin Menu
+      remove_submenu_page("edit.php?post_type={$post_type}", "post-new.php?post_type={$post_type}");
+
+      // Disable direct access to the 'Add New' page
+      add_action('admin_init', function() use ($post_type) {
+          global $pagenow;
+          if ($pagenow == 'post-new.php' && isset($_GET['post_type']) && $_GET['post_type'] == $post_type) {
+              wp_redirect(admin_url('edit.php?post_type=' . $post_type));
+              exit;
+          }
+      });
+  }
+}
+add_action('admin_menu', 'disable_new_posts_for_nav_menu');
+
+function remove_navigation_menu_sub_menu_from_admin_bar() {
+  global $wp_admin_bar;
+  $post_type = 'nav-menu';
+  $count_posts = wp_count_posts($post_type);
+
+  $published_posts = $count_posts->publish;
+  if ($published_posts > 1) {
+      // Remove 'Add New' from the Admin Bar
+      $wp_admin_bar->remove_menu('new-' . $post_type);
+  }
+}
+add_action('admin_bar_menu', 'remove_navigation_menu_sub_menu_from_admin_bar', 999);
+
+function hide_nav_menu_for_non_admin() {
+  if (!current_user_can('administrator')) {
+    $post_type = 'nav-menu';
+      $menu_slug = "edit.php?post_type={$post_type}";
+      global $menu;
+      foreach ($menu as $index => $item) {
+          if ($menu_slug === $item[2]) {
+              unset($menu[$index]);
+              break;
+          }
+      }
+  }
+}
+
+add_action('admin_menu', 'hide_nav_menu_for_non_admin', 999);
