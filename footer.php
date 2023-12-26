@@ -138,21 +138,25 @@
                             <div class="text-white">Follow us on</div>
                         </div>
                         <div class="col-1 d-flex justify-content-end">
-                            <a href="https://twitter.com/genpharmmena" target="_blank" class="social-icon twitter">
+                            <a href="https://facebook.com" target="_blank" class="social-icon facebook">
                             </a>
                         </div>
                         <div class="col-1 d-flex justify-content-end">
-                            <a href="https://www.linkedin.com/company/genpharm-services/" target="_blank"
+                            <a href="https://x.com" target="_blank" class="social-icon x">
+                            </a>
+                        </div>
+                        <div class="col-1 d-flex justify-content-end">
+                            <a href="https://www.linkedin.com/" target="_blank"
                                 class="social-icon linkedin">
                             </a>
                         </div>
                         <div class="col-1 d-flex justify-content-end">
-                            <a href="https://www.instagram.com/genpharmmena/" target="_blank"
+                            <a href="https://www.instagram.com/" target="_blank"
                                 class="social-icon instagram">
                             </a>
                         </div>
                         <div class="col-1 d-flex justify-content-end">
-                            <a href="https://www.youtube.com/@genpharm474" target="_blank" class="social-icon youtube">
+                            <a href="https://www.youtube.com" target="_blank" class="social-icon youtube">
                             </a>
                         </div>
                     </div>
