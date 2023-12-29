@@ -3,8 +3,8 @@
 // * Template Resources
 function theme_resources() {
   wp_enqueue_style( 'main', get_template_directory_uri() . '/dist/css/style.css' );
-  // wp_enqueue_style( 'owl-main', get_template_directory_uri() . '/dist/css/owl.carousel.min.css' );
-  // wp_enqueue_style( 'owl-theme', get_template_directory_uri() . '/dist/css/owl.theme.default.min.css' );
+  wp_enqueue_style( 'owl-main', get_template_directory_uri() . '/dist/css/owl.carousel.min.css' );
+  wp_enqueue_style( 'owl-theme', get_template_directory_uri() . '/dist/css/owl.theme.default.min.css' );
   wp_enqueue_style( 'style', get_stylesheet_uri() );
 }
 // * Load Styles  

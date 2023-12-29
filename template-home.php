@@ -211,7 +211,7 @@
                     <?php 
                         if ($i !== 2) {
                     ?>
-                        <div class="bp-line"></div>
+                    <div class="bp-line"></div>
                     <?php
                         }
                         ?>
@@ -224,11 +224,14 @@
     </div>
 </div>
 
-<div class="container pb-80 pt-80">
+<div class="container pt-80">
     <h2 class="text-medium text-secondary">Hear from ISA Bullion’s esteemed clientele from around the world.</h2>
     <h1 class="text-large">We’re Spreading Smiles Worldwide</h1>
-    <div class="trust-pilot-logo"></div>
-    <button class="btn bp-btn btn-primary bp-btn-link mt-40 ">View all</button>
+    <div class="trust-pilot-logo mt-20"></div>
+</div>
+<?php include('partials/testimonials.php') ?>
+<div class="container">
+    <button class="btn bp-btn btn-primary bp-btn-link mb-60">View all</button>
 </div>
 
 <div class="bg-light">
