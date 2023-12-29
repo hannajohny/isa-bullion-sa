@@ -53,6 +53,23 @@
 <div class="bg-light">
     <div class="container pt-80 pb-80">
         <h3 class="text-center text-large">As featured on</h3>
+        <div class="row mt-60 align-items-center justify-content-center">
+            <div class="col align-items-center justify-content-center d-flex flex-column">
+                <div class="icon"></div>
+            </div>
+            <div class="col align-items-center justify-content-center d-flex flex-column">
+                <div class="icon"></div>
+            </div>
+            <div class="col align-items-center justify-content-center d-flex flex-column">
+                <div class="icon"></div>
+            </div>
+            <div class="col align-items-center justify-content-center d-flex flex-column">
+                <div class="icon"></div>
+            </div>
+            <div class="col align-items-center justify-content-center d-flex flex-column">
+                <div class="icon"></div>
+            </div>
+        </div>
     </div>
 </div>
 
@@ -288,27 +305,29 @@
 
 
 <div class="container pt-80 pb-80">
-    <div class="row">
-        <div class="col">
+    <div class="row align-items-center justify-content-center">
+        <div class="col-5 h-100 align-items-center justify-content-center">
             <h2 class="text-medium text-secondary">Start trading now</h2>
             <h1 class="text-large mb-30">Download our app</h1>
-            <p>
+            <p style="max-width: 450px;">
                 Take control of your physical gold or silver bullion trades on the go. Download the ISA Bullion App to
                 make trades, track profits, catch trends and view live spot charts for gold and silver prices worldwide.
                 Make real-time purchases and set up custom market alerts to track the price of gold and silver to always
                 trade at the right time.
             </p>
             <div class="row flex-row mt-30">
-                <div class="d-flex flex-column col-3 justify-content-start">
-                    <button class="btn bp-btn btn-primary">App Store</button>
+                <div class="d-flex flex-column col-4 justify-content-start">
+                    <button class="btn bp-btn btn-primary app-store">App Store</button>
                 </div>
-                <div class="d-flex flex-column col-3 justify-content-start">
-                    <button class="btn bp-btn btn-primary">Google Play</button>
+                <div class="d-flex flex-column col-4 justify-content-start">
+                    <button class="btn bp-btn btn-primary play-store">Google Play</button>
 
                 </div>
             </div>
         </div>
-        <div class="col"></div>
+        <div class="col-5">
+            <div class="mobile-app"></div>
+        </div>
     </div>
 </div>
 
