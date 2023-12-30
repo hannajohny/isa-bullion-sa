@@ -25,86 +25,71 @@
                                 </div>
                             </div>
 
-                            <div class="d-flex flex-column flex-grow-1">
-
-                            </div>
-
+                            <?php
+                            $args = array(
+                                'post_type' => 'footer-menu',
+                                'post_status' => 'publish',
+                                'posts_per_page' => '1',
+                            );
+                            $posts_loop = new WP_Query( $args );
+                            $counter = 0;
+                            if ( $posts_loop->have_posts() ) :
+                                while ( $posts_loop->have_posts() ) : $posts_loop->the_post();
+                                if( have_rows('menu_items') ):
+                                    while( have_rows('menu_items') ) : the_row();
+                                    $item_label = get_sub_field('item_label');
+                                    $counter++;
+                                    ?>
                             <div class="d-flex flex-column flex-grow-1">
                                 <div class="d-block d-lg-none d-xl-none">
                                     <button class="accordion-button footer-menu-title collapsed" type="button"
-                                        data-bs-toggle="collapse" data-bs-target="#two" aria-expanded="false"
-                                        aria-controls="two">
-                                        Useful links
+                                        data-bs-toggle="collapse" data-bs-target="#fm-<?php echo $counter; ?>">
+                                        <?php echo $item_label; ?>
                                     </button>
                                 </div>
 
                                 <div
                                     class="footer-menu-title d-none d-lg-block d-xl-block mb-20 fw-bold text-secondary">
-                                    Useful links
+                                    <?php echo $item_label; ?>
                                 </div>
 
-                                <div class="collapse d-lg-flex footer-menu-nav" id="two" data-bs-parent="#accordion">
+                                <div class="collapse d-lg-flex footer-menu-nav" id="fm-<?php echo $counter; ?>"
+                                    data-bs-parent="#accordion">
                                     <div class="col footer-menu-body">
-                                        <ul class="list-unstyled">
-                                            <li class="mb-10"><a class="footer-link"
-                                                    href="<?php echo get_home_url() . '/message-from-founders'?>">Message
-                                                    From Our Founders</a>
+                                        <ul class="list-unstyled p-0">
+                                            <?php
+                                                while( have_rows('sub_menus') ) : the_row();
+                                                $sub_menu_label = get_sub_field('sub_menu_label');
+                                                $sub_menu_link = get_sub_field('sub_menu_link');
+                                            ?>
+                                            <li class="mb-10">
+                                                <a class="footer-link"
+                                                    href="<?php echo $sub_menu_link; ?>"><?php echo $sub_menu_label; ?>
+                                                </a>
                                             </li>
-                                            <li class="mb-10"><a class="footer-link"
-                                                    href="<?php echo get_home_url() . '/capabilities-and-expertise'?>">Capabilities
-                                                    and Expertise</a>
-                                            </li>
-                                            <li class="mb-10"><a class="footer-link"
-                                                    href="https://www.genpharmservices.com/wp-content/uploads/2022/09/genpharm_company_profile_sept2022.pdf"
-                                                    target="_blank">Corporate Profile</a>
-                                            </li>
+                                            <?php 
+                                                endwhile;
+                                            ?>
                                         </ul>
                                     </div>
                                 </div>
 
                             </div>
+                            <?php
+                                ?>
+                            <?php
+                                    endwhile;
+                                endif;
 
-                            <div class="d-flex flex-column flex-grow-1">
-                                <div class="d-block d-lg-none d-xl-none">
-                                    <button class="accordion-button footer-menu-title collapsed" type="button"
-                                        data-bs-toggle="collapse" data-bs-target="#three" aria-expanded="false"
-                                        aria-controls="three">
-                                        Terms
-                                    </button>
-                                </div>
-
-                                <div
-                                    class="footer-menu-title d-none d-lg-block d-xl-block mb-20 fw-bold text-secondary">
-                                    Terms
-                                </div>
-
-                                <div class="collapse d-lg-flex footer-menu-nav" id="three" data-bs-parent="#accordion">
-                                    <div class="col footer-menu-body">
-                                        <ul class="list-unstyled">
-                                            <li class="mb-10">
-                                                <a class="footer-link"
-                                                    href="<?php echo get_home_url() . '/contact'?>">Contact Us</a>
-                                            </li>
-                                            <li class="mb-10">
-                                                <a class="footer-link"
-                                                    href="<?php echo get_home_url() . '/partnerships'?>">Our
-                                                    Partnerships</a>
-                                            </li>
-                                            <li class="mb-10">
-                                                <a class="footer-link"
-                                                    href="<?php echo get_home_url() . '/faqs'?>">FAQs</a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-
-                            </div>
+                                endwhile;
+                                    wp_reset_postdata();
+                                endif;
+                                ?>
 
                             <div class="">
                                 <div class="d-block d-lg-none d-xl-none">
                                     <button class="accordion-button footer-menu-title collapsed" type="button"
-                                        data-bs-toggle="collapse" data-bs-target="#four" aria-expanded="false"
-                                        aria-controls="four">
+                                        data-bs-toggle="collapse" data-bs-target="#address-fm">
                                         Address
                                     </button>
                                 </div>
@@ -114,27 +99,19 @@
                                     Address
                                 </div>
 
-                                <div class="collapse d-lg-flex footer-menu-nav" id="four" data-bs-parent="#accordion">
-                                    <div class="col footer-menu-body">
-                                        <ul class="list-unstyled">
-                                            <li class="mb-10">
-                                                <a class="footer-link"
-                                                    href="<?php echo get_home_url() . '/therapeutic-areas'?>">Therapeutic
-                                                    Areas</a>
-                                            </li>
-                                            <li class="mb-10">
-                                                <a class="footer-link"
-                                                    href="<?php echo get_home_url() . '/mantra-and-values'?>">Mantra and
-                                                    Values</a>
-                                            </li>
-                                            <li class="mb-10">
-                                                <a class="footer-link"
-                                                    href="<?php echo get_home_url() . '/history'?>">Our History</a>
-                                            </li>
-                                        </ul>
+                                <div class="collapse d-lg-flex footer-menu-nav" id="address-fm" data-bs-parent="#accordion">
+                                    <div class="col">
+                                    <div class="footer-menu-body">
+                                        Almas Tower<br>
+                                        Jumeirah Lake Towers<br>
+                                        Dubai, United Arab Emirates.
+                                    </div>
+                                    <button class="btn bp-btn btn-secondary mt-20 mb-20"  dir="ltr">+971 4 399 9219</button>
                                     </div>
                                 </div>
+
                             </div>
+
                         </div>
                     </div>
                 </div>

@@ -7,9 +7,9 @@
     $current_language = wpml_get_current_language();
 ?>
 
-<div class="page-banner hero position-relative">
+<div class="page-banner hero position-relative mt-100">
 
-    <div class="container h-100">
+    <div class="container h-100 p-0">
         <div class="row h-100">
             <div class="col-4 justify-content-center h-100 d-flex flex-column">
                 <h1 class="mb-20 text-hero"><?php the_field('hero_title') ?></h1>
@@ -315,7 +315,7 @@
                 Make real-time purchases and set up custom market alerts to track the price of gold and silver to always
                 trade at the right time.
             </p>
-            <div class="row flex-row mt-30">
+            <div class="row flex-row mt-30" >
                 <div class="d-flex flex-column col-4 justify-content-start">
                     <button class="btn bp-btn btn-primary app-store">App Store</button>
                 </div>
@@ -325,7 +325,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-5">
+        <div class="col-5" >
             <div class="mobile-app"></div>
         </div>
     </div>

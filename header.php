@@ -14,6 +14,5 @@
 </head>
 
 <body class="body">
-<?php include 'partials/trading-view-top-bar.php' ?>
 <?php include 'partials/desktop-nav.php' ?>
 <?php include 'partials/mobile-nav.php' ?>
