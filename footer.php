@@ -9,6 +9,20 @@
                                 <div class="d-none d-lg-block">
                                     <div class="logo secondary"> </div>
                                 </div>
+
+                                <div class="dropdown mt-40">
+                                    <?php 
+                                        $current_language = wpml_get_current_language();
+                                    ?>
+                                    <button class="btn bp-btn btn-secondary btn-lang-dd bp-dropdown-toggle"
+                                        type="button" data-bs-toggle="dropdown">
+
+                                        <?php echo mb_convert_case($current_language, MB_CASE_TITLE, "UTF-8"); ?>
+                                    </button>
+                                    <ul class="dropdown-menu bp-btn-dropdown-menu box-shadow">
+                                        <?php wpml_language_switcher(); ?>
+                                    </ul>
+                                </div>
                             </div>
 
                             <div class="d-flex flex-column flex-grow-1">
@@ -33,7 +47,8 @@
                                     <div class="col footer-menu-body">
                                         <ul class="list-unstyled">
                                             <li class="mb-10"><a class="footer-link"
-                                                    href="<?php echo get_home_url() . '/message-from-founders'?>">Message From Our Founders</a>
+                                                    href="<?php echo get_home_url() . '/message-from-founders'?>">Message
+                                                    From Our Founders</a>
                                             </li>
                                             <li class="mb-10"><a class="footer-link"
                                                     href="<?php echo get_home_url() . '/capabilities-and-expertise'?>">Capabilities
@@ -129,7 +144,7 @@
         <div class="container pt-40 pb-40 d-none d-xl-block">
             <div class="row align-items-center justify-content-between">
                 <div class="col p-0">
-                <div class="text-white">©<?php echo Date('Y')?> ISA Bullion DMCC. All Rights Reserved.</div>
+                    <div class="text-white">©<?php echo Date('Y')?> ISA Bullion DMCC. All Rights Reserved.</div>
 
                 </div>
                 <div class="col d-flex justify-content-end p-0">
@@ -146,13 +161,11 @@
                             </a>
                         </div>
                         <div class="col-1 d-flex justify-content-end">
-                            <a href="https://www.linkedin.com/" target="_blank"
-                                class="social-icon linkedin">
+                            <a href="https://www.linkedin.com/" target="_blank" class="social-icon linkedin">
                             </a>
                         </div>
                         <div class="col-1 d-flex justify-content-end">
-                            <a href="https://www.instagram.com/" target="_blank"
-                                class="social-icon instagram">
+                            <a href="https://www.instagram.com/" target="_blank" class="social-icon instagram">
                             </a>
                         </div>
                         <div class="col-1 d-flex justify-content-end">
@@ -167,7 +180,8 @@
         <div class="container pt-40 d-block d-xl-none">
             <div class="col align-items-center justify-content-center">
                 <div class="row">
-                    <div class="text-white text-center">©<?php echo Date('Y')?> ISA Bullion DMCC. All Rights Reserved.</div>
+                    <div class="text-white text-center">©<?php echo Date('Y')?> ISA Bullion DMCC. All Rights Reserved.
+                    </div>
                 </div>
                 <div class="row">
                     <div class="text-white text-center mt-40">Follow us on</div>
