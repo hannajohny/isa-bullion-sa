@@ -9,20 +9,21 @@
                                 <div class="d-none d-lg-block">
                                     <div class="logo secondary"> </div>
                                 </div>
-
-                                <div class="dropdown mt-40">
-                                    <?php 
-                                        $current_language = wpml_get_current_language();
-                                    ?>
-                                    <button class="btn bp-btn btn-secondary btn-lang-dd bp-dropdown-toggle"
-                                        type="button" data-bs-toggle="dropdown">
-
-                                        <?php echo mb_convert_case($current_language, MB_CASE_TITLE, "UTF-8"); ?>
-                                    </button>
-                                    <ul class="dropdown-menu bp-btn-dropdown-menu box-shadow">
-                                        <?php wpml_language_switcher(); ?>
-                                    </ul>
+                                <div class="d-none d-lg-block">
+                                    <div class="dropdown mt-40">
+                                        <?php 
+                                            $current_language = wpml_get_current_language();
+                                        ?>
+                                        <button class="btn bp-btn btn-secondary btn-lang-dd bp-dropdown-toggle"
+                                            type="button" data-bs-toggle="dropdown">
+                                            <?php echo mb_convert_case($current_language, MB_CASE_TITLE, "UTF-8"); ?>
+                                        </button>
+                                        <ul class="dropdown-menu bp-btn-dropdown-menu box-shadow">
+                                            <?php wpml_language_switcher(); ?>
+                                        </ul>
+                                    </div>
                                 </div>
+
                             </div>
 
                             <?php
@@ -99,14 +100,16 @@
                                     Address
                                 </div>
 
-                                <div class="collapse d-lg-flex footer-menu-nav" id="address-fm" data-bs-parent="#accordion">
+                                <div class="collapse d-lg-flex footer-menu-nav" id="address-fm"
+                                    data-bs-parent="#accordion">
                                     <div class="col">
-                                    <div class="footer-menu-body">
-                                        Almas Tower<br>
-                                        Jumeirah Lake Towers<br>
-                                        Dubai, United Arab Emirates.
-                                    </div>
-                                    <button class="btn bp-btn btn-secondary mt-20 mb-20"  dir="ltr">+971 4 399 9219</button>
+                                        <div class="footer-menu-body">
+                                            Almas Tower<br>
+                                            Jumeirah Lake Towers<br>
+                                            Dubai, United Arab Emirates.
+                                        </div>
+                                        <button class="btn bp-btn btn-secondary mt-20 mb-20" dir="ltr">+971 4 399
+                                            9219</button>
                                     </div>
                                 </div>
 
@@ -120,9 +123,9 @@
 
         <div class="container pt-40 pb-40 d-none d-xl-block">
             <div class="row align-items-center justify-content-between">
+
                 <div class="col p-0">
                     <div class="text-white">©<?php echo Date('Y')?> ISA Bullion DMCC. All Rights Reserved.</div>
-
                 </div>
                 <div class="col d-flex justify-content-end p-0">
                     <div class="row d-flex w-100 align-items-center justify-content-end">
@@ -130,23 +133,23 @@
                             <div class="text-white">Follow us on</div>
                         </div>
                         <div class="col-1 d-flex justify-content-end">
-                            <a href="https://facebook.com" target="_blank" class="social-icon facebook">
+                            <a href="#" target="_blank" class="social-icon facebook">
                             </a>
                         </div>
                         <div class="col-1 d-flex justify-content-end">
-                            <a href="https://x.com" target="_blank" class="social-icon x">
+                            <a href="#" target="_blank" class="social-icon x">
                             </a>
                         </div>
                         <div class="col-1 d-flex justify-content-end">
-                            <a href="https://www.linkedin.com/" target="_blank" class="social-icon linkedin">
+                            <a href="#" target="_blank" class="social-icon linkedin">
                             </a>
                         </div>
                         <div class="col-1 d-flex justify-content-end">
-                            <a href="https://www.instagram.com/" target="_blank" class="social-icon instagram">
+                            <a href="#" target="_blank" class="social-icon instagram">
                             </a>
                         </div>
                         <div class="col-1 d-flex justify-content-end">
-                            <a href="https://www.youtube.com" target="_blank" class="social-icon youtube">
+                            <a href="#" target="_blank" class="social-icon youtube">
                             </a>
                         </div>
                     </div>
@@ -154,32 +157,51 @@
             </div>
         </div>
 
-        <div class="container pt-40 d-block d-xl-none">
-            <div class="col align-items-center justify-content-center">
+        <div class="container pt-40 pb-40 d-block d-lg-none">
+            <div class="col flex-column d-flex align-items-center justify-content-center">
+                <div class="row mb-40 justify-content-between align-items-center w-100">
+                    <div class="col">
+                        <div class="logo secondary"></div>
+                    </div>
+                    <div class="col d-flex flex-column align-items-end">
+                    <div class="dropdown">
+                        <?php 
+                            $current_language = wpml_get_current_language();
+                        ?>
+                        <button class="btn bp-btn btn-secondary btn-lang-dd bp-dropdown-toggle" type="button"
+                            data-bs-toggle="dropdown">
+                            <?php echo mb_convert_case($current_language, MB_CASE_TITLE, "UTF-8"); ?>
+                        </button>
+                        <ul class="dropdown-menu bp-btn-dropdown-menu box-shadow">
+                            <?php wpml_language_switcher(); ?>
+                        </ul>
+                    </div>
+                    </div>
+          
+                </div>
+
                 <div class="row">
                     <div class="text-white text-center">©<?php echo Date('Y')?> ISA Bullion DMCC. All Rights Reserved.
                     </div>
                 </div>
                 <div class="row">
-                    <div class="text-white text-center mt-40">Follow us on</div>
+                    <div class="text-white text-center mt-20">Follow us on</div>
                 </div>
-                <div class="row mt-40 align-items-center justify-content-center">
-                    <div class="col-2 d-flex flex-column align-items-center">
-                        <a href="https://twitter.com/genpharmmena" target="_blank" class="social-icon twitter">
-                        </a>
+                <div class="row mt-20 align-items-center justify-content-center">
+                    <div class="col d-flex flex-column align-items-center">
+                        <a href="#" target="_blank" class="social-icon facebook"></a>
                     </div>
-                    <div class="col-2 d-flex flex-column align-items-center">
-                        <a href="https://www.linkedin.com/company/genpharm-services/" target="_blank"
-                            class="social-icon linkedin">
-                        </a>
+                    <div class="col d-flex flex-column align-items-center">
+                        <a href="#" target="_blank" class="social-icon x"></a>
                     </div>
-                    <div class="col-2 d-flex flex-column align-items-center">
-                        <a href="https://www.instagram.com/genpharmmena/" target="_blank" class="social-icon instagram">
-                        </a>
+                    <div class="col d-flex flex-column align-items-center">
+                        <a href="#" target="_blank" class="social-icon linkedin"></a>
                     </div>
-                    <div class="col-2 d-flex flex-column align-items-center">
-                        <a href="https://www.youtube.com/@genpharm474" target="_blank" class="social-icon youtube">
-                        </a>
+                    <div class="col d-flex flex-column align-items-center">
+                        <a href="#" target="_blank" class="social-icon instagram"></a>
+                    </div>
+                    <div class="col d-flex flex-column align-items-center">
+                        <a href="#" target="_blank" class="social-icon youtube"></a>
                     </div>
                 </div>
 
