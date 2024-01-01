@@ -1,6 +1,4 @@
 jQuery(document).ready(($) => {
-  console.log('App ready');
-
   const owlTestimonials = $('.owl-carousel-testimonials');
   owlTestimonials.owlCarousel({
     loop: true,
