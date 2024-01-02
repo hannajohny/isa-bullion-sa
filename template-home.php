@@ -268,6 +268,9 @@
                             <li class="mb-20 bp-custom-li">Vaulting</li>
                         </ul>
                     </div>
+                    <div class="d-flex align-items-center justify-content-center mt-30">
+                        <button class="btn bp-btn btn-secondary box-shadow">Open account</button>
+                    </div>
                 </div>
             </div>
             <div class="col-3">
@@ -291,7 +294,7 @@
                     <div class="col">
                         <div class="text-strong mb-40 text-medium text-white">Trading in silver</div>
                         <ul class="bp-custom-ul">
-                            <li class=" text-white bp-custom-li">Opening an Account</li>
+                            <li class=" text-white bp-custom-li">Kilograms - $0.05/Oz</li>
                         </ul>
                     </div>
                     <div class="d-flex align-items-center justify-content-center">
