@@ -91,25 +91,24 @@
                                 <div class="d-block d-lg-none d-xl-none">
                                     <button class="accordion-button footer-menu-title collapsed" type="button"
                                         data-bs-toggle="collapse" data-bs-target="#address-fm">
-                                        Address
+                                         <?php the_field('address_label', 'option') ?>  
                                     </button>
                                 </div>
 
                                 <div
                                     class="footer-menu-title d-none d-lg-block d-xl-block mb-20 fw-bold text-secondary">
-                                    Address
+                                     <?php the_field('address_label', 'option') ?>  
                                 </div>
 
                                 <div class="collapse d-lg-flex footer-menu-nav" id="address-fm"
                                     data-bs-parent="#accordion">
                                     <div class="col">
                                         <div class="footer-menu-body">
-                                            Almas Tower<br>
-                                            Jumeirah Lake Towers<br>
-                                            Dubai, United Arab Emirates.
+                                            <?php the_field('address', 'option') ?>    
                                         </div>
-                                        <button class="btn bp-btn btn-secondary mt-20 mb-20" dir="ltr">+971 4 399
-                                            9219</button>
+                                        <a class="btn bp-btn btn-secondary mt-20 mb-20" dir="ltr" href="tel:<?php the_field('phone_number', 'option'); ?>">
+                                            <?php the_field('phone_number', 'option') ?> 
+                                        </a>
                                     </div>
                                 </div>
 
@@ -125,12 +124,12 @@
             <div class="row align-items-center justify-content-between">
 
                 <div class="col p-0">
-                    <div class="text-white">©<?php echo Date('Y')?> ISA Bullion DMCC. All Rights Reserved.</div>
+                    <div class="text-white">© <?php the_field('copyrights_label', 'option'); ?></div>
                 </div>
                 <div class="col d-flex justify-content-end p-0">
                     <div class="row d-flex w-100 align-items-center justify-content-end">
                         <div class="col-3">
-                            <div class="text-white">Follow us on</div>
+                            <div class="text-white"><?php the_field('follow_us_label', 'option'); ?></div>
                         </div>
                         <div class="col-1 d-flex justify-content-end">
                             <a href="#" target="_blank" class="social-icon facebook">
@@ -181,11 +180,11 @@
                 </div>
 
                 <div class="row">
-                    <div class="text-white text-center">©<?php echo Date('Y')?> ISA Bullion DMCC. All Rights Reserved.
+                    <div class="text-white text-center">© <?php the_field('copyrights_label', 'option'); ?>
                     </div>
                 </div>
                 <div class="row">
-                    <div class="text-white text-center mt-20">Follow us on</div>
+                    <div class="text-white text-center mt-20"><p><?php the_field('follow_us_label', 'option'); ?></p></div>
                 </div>
                 <div class="row mt-20 align-items-center justify-content-center">
                     <div class="col d-flex flex-column align-items-center">

@@ -7,6 +7,7 @@
     $current_language = wpml_get_current_language();
 ?>
 
+<!-- Hero -->
 <div class="page-banner hero position-relative mt-100">
 
     <div class="container h-100 p-0">
@@ -16,20 +17,30 @@
                 <p><?php the_field('hero_description') ?></p>
                 <div class="row mt-40">
                     <div class="col-4">
-                        <button class="btn bp-btn btn-secondary">Open account</button>
+                        <?php 
+                        $link = get_field('button_one_link');
+                            if( $link ): 
+                                $link_url = $link['url'];
+                                $link_title = $link['title'];
+                                $link_target = $link['target'] ? $link['target'] : '_self';
+                            ?>
+                        <a class="btn bp-btn btn-secondary" href="<?php echo esc_url( $link_url ); ?>"
+                            target="<?php echo esc_attr( $link_target ); ?>"><?php the_field('button_one_label') ?></a>
+                        <?php endif; ?>
                     </div>
                     <div class="col-4">
                         <?php 
-                    if ($current_language !== 'ar') {
-                        ?>
-                        <button class="btn bp-btn bp-btn-arrow">Try a demo</button>
-                        <?php
-                    } else {
-                        ?>
-                        <button class="btn bp-btn bp-btn-arrow rtl">Try a demo</button>
-                        <?php
-                    }
-                ?>
+                            $class_to_add = $current_language == 'ar' ? 'rtl' : '';
+                            $link = get_field('button_two_link');
+                            if( $link ): 
+                                $link_url = $link['url'];
+                                $link_title = $link['title'];
+                                $link_target = $link['target'] ? $link['target'] : '_self';
+                            ?>
+                        <a class="btn bp-btn bp-btn-arrow <?php echo $class_to_add; ?>"
+                            href="<?php echo esc_url( $link_url ); ?>"
+                            target="<?php echo esc_attr( $link_target ); ?>"><?php the_field('button_two_label') ?></a>
+                        <?php endif; ?>
                     </div>
                 </div>
             </div>
@@ -50,9 +61,10 @@
     </div>
 </div>
 
+<!-- Featured -->
 <div class="bg-light">
     <div class="container pt-80 pb-80">
-        <h3 class="text-center text-large">As featured on</h3>
+        <h3 class="text-center text-large"><?php the_field('featured_on_label'); ?></h3>
         <div class="row mt-60 align-items-center justify-content-center">
             <div class="col align-items-center justify-content-center d-flex flex-column">
                 <div class="icon"></div>
@@ -73,47 +85,56 @@
     </div>
 </div>
 
+<!-- Key benefits -->
 <div class="container pt-80 pb-80" style="max-width: 1200px">
     <div class="d-flex flex-column align-items-center justify-content-center">
-        <h3 class="text-secondary text-medium text-center">Key benefits</h3>
+        <h3 class="text-secondary text-medium text-center">
+            <?php the_field('key_benefits_title_one') ?>
+        </h3>
         <h1 class="text-large text-center">
-            The ultimate<br>
-            Bullion trading experience
+            <?php the_field('key_benefits_title_two') ?>
         </h1>
         <p class="mt-20 text-center" style="max-width: 500px;">
-            Lorem ipsum dolor sit amet consectetur. Tincidunt dictum vitae in volutpat nisl scelerisque. Et quis viverra
-            tincidunt a rhoncus. Tortor est tincidunt in augue vitae elementum arcu vel dictumst.
+            <?php the_field('key_benefits_description') ?>
         </p>
     </div>
 
-    <div class="row mt-60">
-        <?php 
-    
-        for ($i=0; $i <8; $i++) { 
-            ?>
-        <div class="col-md-3">
-            <div class="bp-card bp-card-rounded bp-card-shadow bg-primary p-40 mb-20">
+    <div class="row mt-60 justify-content-center">
+
+        <?php
+
+        if( have_rows('key_benefit_cards') ):
+
+            while( have_rows('key_benefit_cards') ) : the_row();
+        ?>
+
+        <div class="col-lg-3 col-md-6 mb-20">
+            <div class="bp-card bp-card-rounded bp-card-shadow bg-primary p-30 h-100">
                 <div class="flex-column d-flex align-items-center justify-content-center">
-                    <div class="icon mb-20"></div>
-                    <div class="mb-10 text-center text-white text-strong">Competitive pricing</div>
-                    <div class="text-center text-white">Enjoy low fees of $2.5 /oz for Gold Trading and $0.05/Oz for
-                        Silver</div>
+                    <div class="icon mb-20"
+                        style="background-image: url('<?php the_sub_field('key_benefits_card_icon'); ?>')"></div>
+                    <div class="mb-20 text-center text-white text-strong text-medium">
+                        <?php the_sub_field('key_benefits_card_title') ?></div>
+                    <div class="text-center text-white"><?php the_sub_field('key_benefits_card_description') ?></div>
                 </div>
             </div>
         </div>
         <?php
-        }
-    ?>
+            endwhile;
+        endif;
+        ?>
+
     </div>
 </div>
 
+<!-- Resources -->
 <div class="bg-light">
     <div class="container pt-80 pb-80">
-        <h1 class="text-large mb-40">Market news & resources</h1>
+        <h1 class="text-large mb-40"><?php the_field('market_news_resources_title') ?></h1>
 
         <div class="row">
             <div class="col-lg-5">
-                <div class="text-strong">Latest articles from our experts</div>
+                <div class="text-strong"><?php the_field('latest_articles_title') ?></div>
                 <ul class="nav nav-underline bg-white mt-40">
                     <li class="nav-item">
                         <a class="bp-tab-nav-link dark active" id="home-tab" data-bs-toggle="tab" href="#tab-home"
@@ -160,7 +181,7 @@
                 </div>
             </div>
             <div class="col-lg-4">
-                <div class="text-strong">Live market news</div>
+                <div class="text-strong"><?php the_field('live_market_news_title') ?></div>
                 <div class="bg-white mt-40 box-shadow">
                     <?php
                         for ($i=0; $i <3; $i++) { 
@@ -202,7 +223,7 @@
                 </div>
             </div>
             <div class="col-lg-3">
-                <div class="text-strong">Market reports</div>
+                <div class="text-strong"><?php the_field('market_reports_title') ?></div>
                 <div class="bg-white mt-40 box-shadow">
                     <?php
                         for ($i=0; $i <3; $i++) { 
@@ -241,107 +262,161 @@
     </div>
 </div>
 
+<!-- testimonials -->
 <div class="container pt-80">
-    <h2 class="text-medium text-secondary">Hear from ISA Bullion’s esteemed clientele from around the world.</h2>
-    <h1 class="text-large">We’re Spreading Smiles Worldwide</h1>
+    <h2 class="text-medium text-secondary"><?php the_field('testimonials_title_one') ?></h2>
+    <h1 class="text-large"><?php the_field('testimonials_title_two') ?></h1>
     <div class="trust-pilot-logo mt-20"></div>
 </div>
 <?php include('partials/testimonials.php') ?>
 <div class="container">
-    <button class="btn bp-btn btn-primary bp-btn-link mb-60">View all</button>
+    <?php 
+        $link = get_field('testimonial_button_link');
+            if( $link ): 
+                $link_url = $link['url'];
+                $link_title = $link['title'];
+                $link_target = $link['target'] ? $link['target'] : '_self';
+    ?>
+    <div class="col d-flex flex-column justify-content-start align-items-start">
+        <a class="btn bp-btn btn-primary bp-btn-link mb-60" href="<?php echo esc_url( $link_url ); ?>"
+            target="<?php echo esc_attr( $link_target ); ?>"><?php the_field('testimonial_button_label') ?></a>
+    </div>
+    <?php endif; ?>
 </div>
 
+<!-- Rates and costs -->
 <div class="bg-light">
     <div class="container pt-80 pb-80">
-        <h2 class="text-medium text-secondary text-center">Exceptional on every level</h2>
-        <h1 class="text-large text-center">Rates and costs</h1>
+        <h2 class="text-medium text-secondary text-center"><?php the_field('rates_title_one')?></h2>
+        <h1 class="text-large text-center"><?php the_field('rates_title_two')?></h1>
 
         <div class="row mt-60 justify-content-center">
-            <div class="col-3">
-                <div class="h-100 bp-card bp-card-rounded bp-card-shadow bg-white p-40 d-flex flex-column">
-                    <div class="text-strong mb-40 text-medium">Free</div>
-                    <div class="col">
-                        <ul class="bp-custom-ul">
-                            <li class="mb-20 bp-custom-li">Opening an Account</li>
-                            <li class="mb-20 bp-custom-li">Depositing Funds</li>
-                            <li class="mb-20 bp-custom-li">Insurance</li>
-                            <li class="mb-20 bp-custom-li">Vaulting</li>
-                        </ul>
+
+            <?php
+            if( have_rows('rates_cards') ):
+                while( have_rows('rates_cards') ) : the_row();
+                $card_color = get_sub_field('rates_card_color');
+            ?>
+
+            <div class="col-xl-3 col-lg-6 col-md-12 mb-30">
+                <div
+                    class="h-100 bp-card bp-card-rounded bp-card-shadow bg-<?php echo $card_color; ?> p-40 d-flex flex-column">
+                    <div class="row">
+                        <div class="col-2">
+                            <div class="icon small"
+                                style="background-image: url('<?php the_sub_field('rates_cards_icon'); ?>')"></div>
+                        </div>
+                        <div class="col">
+                            <div
+                                class="text-strong mb-40 text-medium <?php echo $card_color == 'primary' ? 'text-white' : '' ?>">
+                                <?php the_sub_field('rates_card_title') ?></div>
+                        </div>
+                    </div>
+
+                    <div class="row h-100 align-content-start">
+
+                        <?php
+                            if( have_rows('rates_card_rates') ):
+                                while( have_rows('rates_card_rates') ) : the_row();
+                            ?>
+                        <div class="d-flex align-items-center mb-20">
+                            <div class="icon bullet-point 
+                                <?php echo $card_color == 'secondary' ? 'primary' : ''; echo $current_language == 'ar' ? ' ml-15' : ' mr-15'; ?>">
+                            </div>
+                            <div class="<?php echo $card_color == 'primary' ? 'text-white' : '' ?>">
+                                <?php the_sub_field('rates_card_rate') ?>
+                            </div>
+                        </div>
+                        <?php
+                                endwhile;
+                                endif;
+                            ?>
                     </div>
                     <div class="d-flex align-items-center justify-content-center mt-30">
-                        <button class="btn bp-btn btn-secondary box-shadow">Open account</button>
+                    <?php 
+                        $link = get_sub_field('rates_card_link');
+                            if( $link ): 
+                                $link_url = $link['url'];
+                                $link_title = $link['title'];
+                                $link_target = $link['target'] ? $link['target'] : '_self';
+                            ?>
+
+                        <a  href="<?php echo esc_url( $link_url ); ?>"
+                            target="<?php echo esc_attr( $link_target ); ?>"
+                            class="btn bp-btn btn-<?php echo $card_color == 'primary' ? 'secondary' : 'primary' ?> box-shadow">
+                            <?php the_sub_field('rates_card_button_label') ?>
+                        </a>
+                       
+                        <?php endif; ?>
+                       
                     </div>
                 </div>
             </div>
-            <div class="col-3">
-                <div
-                    class="p-40 bp-card bp-card-rounded bp-card-shadow bg-secondary h-100 d-flex justify-content-between flex-column">
-                    <div class="col">
-                        <div class="text-strong mb-40 text-medium">Trading in gold</div>
-                        <ul class="bp-custom-ul">
-                            <li class="mb-20 bp-custom-li">Opening an Account</li>
-                            <li class="mb-20 bp-custom-li">Depositing Funds</li>
-                        </ul>
-                    </div>
-                    <div class="d-flex align-items-center justify-content-center">
-                        <button class="btn bp-btn btn-primary box-shadow">Know more</button>
-                    </div>
-                </div>
-            </div>
-            <div class="col-3">
-                <div
-                    class="p-40 bp-card bp-card-rounded bp-card-shadow bg-primary h-100 d-flex justify-content-between flex-column">
-                    <div class="col">
-                        <div class="text-strong mb-40 text-medium text-white">Trading in silver</div>
-                        <ul class="bp-custom-ul">
-                            <li class=" text-white bp-custom-li">Kilograms - $0.05/Oz</li>
-                        </ul>
-                    </div>
-                    <div class="d-flex align-items-center justify-content-center">
-                        <button class="btn bp-btn btn-secondary box-shadow">Know more</button>
-                    </div>
-                </div>
-            </div>
+            <?php
+                endwhile;
+                endif;
+            ?>
+
         </div>
     </div>
 </div>
 
-
+<!-- Download app -->
 <div class="container pt-80 pb-80">
     <div class="row align-items-center justify-content-center">
-        <div class="col-5 h-100 align-items-center justify-content-center">
-            <h2 class="text-medium text-secondary">Start trading now</h2>
-            <h1 class="text-large mb-30">Download our app</h1>
+        <div class="col-md-5 h-100 align-items-center justify-content-center">
+            <h2 class="text-medium text-secondary"><?php the_field('download_app_title_one') ?></h2>
+            <h1 class="text-large mb-30"><?php the_field('download_app_title_two') ?></h1>
             <p style="max-width: 450px;">
-                Take control of your physical gold or silver bullion trades on the go. Download the ISA Bullion App to
-                make trades, track profits, catch trends and view live spot charts for gold and silver prices worldwide.
-                Make real-time purchases and set up custom market alerts to track the price of gold and silver to always
-                trade at the right time.
+                <?php the_field('download_app_description') ?>
             </p>
-            <div class="row flex-row mt-30" >
+            <div class="row flex-row mt-30">
                 <div class="d-flex flex-column col-4 justify-content-start">
-                    <button class="btn bp-btn btn-primary app-store">App Store</button>
+                    <?php 
+                        $link = get_field('app_store_link');
+                        if( $link ): 
+                            $link_url = $link['url'];
+                            $link_title = $link['title'];
+                            $link_target = $link['target'] ? $link['target'] : '_self';
+                        ?>
+                    <a class="btn bp-btn btn-primary app-store" href="<?php echo esc_url( $link_url ); ?>"
+                        target="<?php echo esc_attr( $link_target ); ?>">
+                        <?php echo $link_title; ?>
+                    </a>
+                    <?php endif; ?>
                 </div>
                 <div class="d-flex flex-column col-4 justify-content-start">
-                    <button class="btn bp-btn btn-primary play-store">Google Play</button>
-
+                    <?php 
+                        $link = get_field('google_play_link');
+                        if( $link ): 
+                            $link_url = $link['url'];
+                            $link_title = $link['title'];
+                            $link_target = $link['target'] ? $link['target'] : '_self';
+                        ?>
+                    <a class="btn bp-btn btn-primary  play-store" href="<?php echo esc_url( $link_url ); ?>"
+                        target="<?php echo esc_attr( $link_target ); ?>">
+                        <?php echo $link_title; ?>
+                    </a>
+                    <?php endif; ?>
                 </div>
             </div>
         </div>
-        <div class="col-5" >
+        <div class="col-md-5">
             <div class="mobile-app"></div>
         </div>
     </div>
 </div>
 
+<!-- FAQs -->
 <div class="bg-light">
     <div class="container pt-80 pb-80">
-        <h1 class="text-large mb-60">Frequently asked questions</h1>
+        <h1 class="text-large mb-60"><?php the_field('faqs_section_title') ?></h1>
 
         <?php include('partials/faqs.php') ?>
 
         <div class="d-flex">
-            <div class="btn bp-btn btn-primary mt-40">View all</div>
+            <a class="btn bp-btn btn-primary mt-40"
+                href="<?php the_field('faqs_button_link') ?>"><?php the_field('faqs_link_button_label') ?></a>
         </div>
     </div>
 </div>
