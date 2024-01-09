@@ -106,7 +106,7 @@
                                         <div class="footer-menu-body">
                                             <?php the_field('address', 'option') ?>    
                                         </div>
-                                        <a class="btn bp-btn btn-secondary mt-20 mb-20" dir="ltr" href="tel:<?php the_field('phone_number', 'option'); ?>">
+                                        <a class="btn bp-btn btn-secondary btn-phone  mt-20 mb-20" dir="ltr" href="tel:<?php the_field('phone_number', 'option'); ?>">
                                             <?php the_field('phone_number', 'option') ?> 
                                         </a>
                                     </div>

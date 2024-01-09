@@ -61,25 +61,23 @@
     </div>
 </div>
 
-<!-- Featured -->
+<!-- Featured on -->
 <div class="bg-light">
     <div class="container pt-80 pb-80">
         <h3 class="text-center text-large"><?php the_field('featured_on_label'); ?></h3>
         <div class="row mt-60 align-items-center justify-content-center">
-            <div class="col align-items-center justify-content-center d-flex flex-column">
-                <div class="icon"></div>
-            </div>
-            <div class="col align-items-center justify-content-center d-flex flex-column">
-                <div class="icon"></div>
-            </div>
-            <div class="col align-items-center justify-content-center d-flex flex-column">
-                <div class="icon"></div>
-            </div>
-            <div class="col align-items-center justify-content-center d-flex flex-column">
-                <div class="icon"></div>
-            </div>
-            <div class="col align-items-center justify-content-center d-flex flex-column">
-                <div class="icon"></div>
+            <div class="owl-carousel-featured-companies owl-carousel" dir="ltr">
+            <?php
+                if( have_rows('featured_on_companies') ):
+                    while( have_rows('featured_on_companies') ) : the_row();
+                ?>
+                    <div class="company-logo" style="background-image: url('<?php the_sub_field('company_logo'); ?>')"></div>
+                    <!-- <div class="col-lg-2 col-md-6 align-items-center justify-content-center d-flex flex-column mb-20">
+                        </div> -->
+                        <?php
+                endwhile;
+            endif;
+            ?>
             </div>
         </div>
     </div>
@@ -268,7 +266,9 @@
     <h1 class="text-large"><?php the_field('testimonials_title_two') ?></h1>
     <div class="trust-pilot-logo mt-20"></div>
 </div>
+
 <?php include('partials/testimonials.php') ?>
+
 <div class="container">
     <?php 
         $link = get_field('testimonial_button_link');
@@ -393,7 +393,7 @@
                             $link_title = $link['title'];
                             $link_target = $link['target'] ? $link['target'] : '_self';
                         ?>
-                    <a class="btn bp-btn btn-primary  play-store" href="<?php echo esc_url( $link_url ); ?>"
+                    <a class="btn bp-btn btn-primary play-store" href="<?php echo esc_url( $link_url ); ?>"
                         target="<?php echo esc_attr( $link_target ); ?>">
                         <?php echo $link_title; ?>
                     </a>
