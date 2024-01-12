@@ -130,10 +130,21 @@
     <div class="container pt-80 pb-80">
         <h1 class="text-large mb-40"><?php the_field('market_news_resources_title') ?></h1>
 
-        <div class="row">
+        <div class="row mb-40">
             <div class="col-lg-5">
                 <div class="text-strong"><?php the_field('latest_articles_title') ?></div>
-                <ul class="nav nav-underline bg-white mt-40">
+            </div>
+            <div class="col-lg-4">
+                <div class="text-strong ml-20"><?php the_field('live_market_news_title') ?></div>
+            </div>
+            <div class="col-lg-3">
+                <div class="text-strong ml-20"><?php the_field('market_reports_title') ?></div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-5">
+                <ul class="nav nav-underline bg-white">
                     <li class="nav-item">
                         <a class="bp-tab-nav-link dark active" id="home-tab" data-bs-toggle="tab" href="#tab-home"
                             role="tab" aria-controls="tab-home" aria-selected="true">Bullion
@@ -179,8 +190,7 @@
                 </div>
             </div>
             <div class="col-lg-4">
-                <div class="text-strong"><?php the_field('live_market_news_title') ?></div>
-                <div class="bg-white mt-40 box-shadow">
+                <div class="bg-white box-shadow">
                     <?php
                         for ($i=0; $i <3; $i++) { 
                             ?>
@@ -189,7 +199,7 @@
                             <div class="bp-chip">Bullion</div>
                             <div class="bp-chip ml-10">Market</div>
                         </div>
-                        <div class="text-strong mt-20">Bearish Long-term position</div>
+                        <div class="text-strong mt-15">Bearish Long-term position</div>
                         <p class="mt-10 text-small">Lorem ipsum dolor sit amet consectetur. Vulputate pellentesque quam
                             magna nibh diam tempor.</p>
 
@@ -221,14 +231,13 @@
                 </div>
             </div>
             <div class="col-lg-3">
-                <div class="text-strong"><?php the_field('market_reports_title') ?></div>
-                <div class="bg-white mt-40 box-shadow">
+                <div class="bg-white box-shadow">
                     <?php
                         for ($i=0; $i <3; $i++) { 
                             ?>
                     <div class="p-20">
-                        <div class="icon"></div>
-                        <div class="text-strong mt-10">Economic calendar</div>
+                        <div class="icon reports"></div>
+                        <div class="text-strong mt-15">Economic calendar</div>
                         <p class="mt-10 text-small">Upcoming financial-economic market events and news.</p>
 
                         <?php 
