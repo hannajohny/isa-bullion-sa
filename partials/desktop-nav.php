@@ -32,7 +32,7 @@
 
                                         ?>
                             <li class="menu__item have-menu cursor-pointer" data-sub="<?php echo $counter; ?>">
-                                <a class="bp-nav-link nav-menu-link text-strong"> <?php echo $item_label; ?></a>
+                                <a href="<?php echo $item_link; ?>" class="bp-nav-link nav-menu-link text-strong"> <?php echo $item_label; ?></a>
                             </li>
                             <?php
                                         }   else {

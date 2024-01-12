@@ -70,13 +70,13 @@
     <div class="container pt-60 pb-80">
         <div class="row justify-content-center">
             <?php 
-                    for ($i=0; $i < 6; $i++) { 
-                        ?>
+                for ($i=0; $i < 6; $i++) { 
+                    ?>
             <div class="col-md-4 mb-30">
                 <div class="card bp-card actionable bp-card-rounded bg-white box-shadow h-100 p-0">
                     <div class="card-image video bg-dark">
                         <div class="row p-30 h-100 align-items-end">
-                        <div class="d-flex justify-content-start">
+                            <div class="d-flex justify-content-start">
                                 <div class="bp-chip bg-white">Bullion</div>
                                 <div class="bp-chip bg-white ml-10">Market</div>
                             </div>
@@ -93,10 +93,10 @@
                     </div>
                 </div>
             </div>
-            <?php
-                    }
-                
-                ?>
+                <?php
+                        }
+                    
+                    ?>
         </div>
     </div>
 </div>
