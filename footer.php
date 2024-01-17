@@ -213,7 +213,8 @@
 
 <script type="text/javascript">
     const ajaxUrl = "<?php echo admin_url('admin-ajax.php'); ?>";
-    const templateUri = "<?php echo get_template_directory_uri(); ?>"
+    const templateUri = "<?php echo get_template_directory_uri(); ?>";
+    const homeUrl = "<?php echo get_home_url(); ?>";
 </script>
 
 <script src="<?php echo get_template_directory_uri() . '/dist/js/nav-menu.js'?>" type="text/javascript"></script>
@@ -221,6 +222,12 @@
 </script>
 <script src="<?php echo get_template_directory_uri() . '/dist/js/app.js'?>" type="text/javascript"></script>
 <script src="<?php echo get_template_directory_uri() . '/dist/js/faqs.js'?>" type="text/javascript"></script>
+
+<script src="<?php echo get_template_directory_uri() . '/dist/js/cal-core.min.js'?>" type="text/javascript"></script>
+
+
+<script src="<?php echo get_template_directory_uri() . '/dist/js/calendar.js'?>" type="text/javascript"></script>
+
 
 <?php wp_footer(); ?>
 

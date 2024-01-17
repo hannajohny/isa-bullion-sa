@@ -2,8 +2,6 @@ jQuery(document).ready(($) => {
   let selectedCategory = $('.faq-category-button').data('slug');
   const faqCategoryButton = $('.faq-category-button'),
     faqsContainer = $('.faqs-tab-container');
-
-  console.log(selectedCategory);
   loadFaqs = function () {
     faqsContainer.html(
       `
