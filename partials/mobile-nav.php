@@ -86,26 +86,12 @@
 
                                         <?php
                                             }  else {
-                                        if ($current_language === 'ar') {
-                                            ?>
-                                             <li class="nav-item pl-20">
-                                                <a class="bp-nav-link" style="display: block; text-align: right; margin-right: 20px !important;" href="<?php echo $item_link; ?>">
-                                                    <?php echo $item_label; ?>
-                                                </a>
-                                            </li>
-                                            <?php
-                                        } else {
-                                            ?>
-                                            <li class="nav-item pl-20">
+                                        ?>
+                                         <li class="nav-item pl-20">
                                                 <a class="bp-nav-link" style="display: block;" href="<?php echo $item_link; ?>">
                                                     <?php echo $item_label; ?>
                                                 </a>
                                             </li>
-                                            <?php
-                                        }
-                                        ?>
-                                        
-                                    
 
                                         <?php
                                             }                
