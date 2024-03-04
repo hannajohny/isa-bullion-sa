@@ -2,12 +2,7 @@
 /* Template Name: Trading */
 ?>
 
-<?php 
-
-get_header(); 
-$current_language = wpml_get_current_language();
-
-?>
+<?php get_header(); ?>
 
 <!-- Hero -->
 <div class="page-banner hero position-relative mt-100">
@@ -25,17 +20,7 @@ $current_language = wpml_get_current_language();
                 </div>
             </div>
             <div class="col-xl-8 col-lg-12">
-                <?php 
-                    if ($current_language !== 'ar') {
-                        ?>
                 <div class="hero-dashboard"></div>
-                <?php
-                    } else {
-                        ?>
-                <div class="hero-dashboard-ar"></div>
-                <?php
-                    }
-                ?>
             </div>
         </div>
     </div>

@@ -1,6 +1,4 @@
     
-<?php $current_language = wpml_get_current_language(); ?>
-
 <div class="row align-items-center justify-content-center">
     <div class="col-md-5 h-100 align-items-center justify-content-center">
         <h2 class="text-medium text-secondary"><?php the_field('mobile_app_header', 'option'); ?></h2>
@@ -15,7 +13,7 @@
                 App Store
             </a>
 
-            <a class="btn bp-btn btn-primary play-store <?php echo $current_language === 'ar' ? 'mr-20' : 'ml-20' ?>" href="<?php the_field('google_play_link', 'option'); ?>"
+            <a class="btn bp-btn btn-primary play-store ml-20" href="<?php the_field('google_play_link', 'option'); ?>"
                 target="_blank">
                 Google Play
             </a>

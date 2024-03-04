@@ -1,12 +1,3 @@
-<?php 
-    $current_language = wpml_get_current_language();
-    if ($current_language == 'ar') { 
-        $accordion_button_arabic_class = 'accordion-button-ar';
-    } else {
-        $accordion_button_arabic_class = '';
-    }
-?>
-
 <div class="container-fluid nav-bar bp-navbar fixed-top d-block d-xl-none bg-primary">
     <div class="row align-items-center h-100">
         <div class="col">
@@ -57,7 +48,7 @@
 
                                             <div class="accordion-item border-0">
                                                 <h2 class="accordion-header p-0" id="heading-<?php echo $counter; ?>">
-                                                    <button class="accordion-button collapsed <?php echo $accordion_button_arabic_class; ?>" type="button"
+                                                    <button class="accordion-button collapsed" type="button"
                                                         data-bs-toggle="collapse" data-bs-target="#collapse-<?php echo $counter; ?>"
                                                         aria-expanded="false" aria-controls="collapse-<?php echo $counter; ?>">
                                                         <?php echo $item_label; ?>
@@ -135,22 +126,6 @@
                                 class="btn bp-btn btn-primary bp-btn-link">Login</a>
                             <a href="<?php echo get_home_url() . '/signup/lets-get-started'; ?>"
                                 class="btn bp-btn btn-primary ml-10 mr-10">Open account</a>
-                        </div>
-
-                        <div class="d-flex align-items-center justify-content-center mt-40">
-                        <div class="dropdown">
-                                <?php 
-                            $current_language = wpml_get_current_language();
-                        ?>
-                                <button class="btn bp-btn btn-secondary btn-lang-dd bp-dropdown-toggle" type="button"
-                                    data-bs-toggle="dropdown">
-
-                                    <?php echo mb_convert_case($current_language, MB_CASE_TITLE, "UTF-8"); ?>
-                                </button>
-                                <ul class="dropdown-menu bp-btn-dropdown-menu box-shadow">
-                                    <?php wpml_language_switcher(); ?>
-                                </ul>
-                            </div>
                         </div>
                     </div>
                 </div>

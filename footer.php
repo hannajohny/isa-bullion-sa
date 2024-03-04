@@ -1,12 +1,3 @@
-<?php 
-    $current_language = wpml_get_current_language();
-    if ($current_language == 'ar') { 
-        $accordion_button_arabic_class = 'accordion-button-ar';
-    } else {
-        $accordion_button_arabic_class = '';
-    }
-?>
-
 <div class="fluid-container bg-primary footer-container">
     <footer>
         <div class="container footer-container p-0">
@@ -18,21 +9,6 @@
                                 <div class="d-none d-lg-block">
                                     <div class="logo secondary"> </div>
                                 </div>
-                                <div class="d-none d-lg-block">
-                                    <div class="dropdown mt-40">
-                                        <?php 
-                                            $current_language = wpml_get_current_language();
-                                        ?>
-                                        <button class="btn bp-btn btn-secondary btn-lang-dd bp-dropdown-toggle"
-                                            type="button" data-bs-toggle="dropdown">
-                                            <?php echo mb_convert_case($current_language, MB_CASE_TITLE, "UTF-8"); ?>
-                                        </button>
-                                        <ul class="dropdown-menu bp-btn-dropdown-menu box-shadow">
-                                            <?php wpml_language_switcher(); ?>
-                                        </ul>
-                                    </div>
-                                </div>
-
                             </div>
 
                             <?php
@@ -52,7 +28,7 @@
                                     ?>
                             <div class="d-flex flex-column flex-grow-1">
                                 <div class="d-block d-lg-none d-xl-none">
-                                    <button class="accordion-button footer-menu-title collapsed <?php echo $accordion_button_arabic_class; ?>" type="button"
+                                    <button class="accordion-button footer-menu-title collapsed" type="button"
                                         data-bs-toggle="collapse" data-bs-target="#fm-<?php echo $counter; ?>">
                                         <?php echo $item_label; ?>
                                     </button>
@@ -98,7 +74,7 @@
 
                             <div class="">
                                 <div class="d-block d-lg-none d-xl-none">
-                                    <button class="accordion-button footer-menu-title collapsed <?php echo $accordion_button_arabic_class; ?>" type="button"
+                                    <button class="accordion-button footer-menu-title collapsed" type="button"
                                         data-bs-toggle="collapse" data-bs-target="#address-fm">
                                          <?php the_field('address_label', 'option') ?>  
                                     </button>
@@ -171,21 +147,6 @@
                     <div class="col">
                         <div class="logo secondary"></div>
                     </div>
-                    <div class="col d-flex flex-column align-items-end">
-                    <div class="dropdown">
-                        <?php 
-                            $current_language = wpml_get_current_language();
-                        ?>
-                        <button class="btn bp-btn btn-secondary btn-lang-dd bp-dropdown-toggle" type="button"
-                            data-bs-toggle="dropdown">
-                            <?php echo mb_convert_case($current_language, MB_CASE_TITLE, "UTF-8"); ?>
-                        </button>
-                        <ul class="dropdown-menu bp-btn-dropdown-menu box-shadow">
-                            <?php wpml_language_switcher(); ?>
-                        </ul>
-                    </div>
-                    </div>
-          
                 </div>
 
                 <div class="row">

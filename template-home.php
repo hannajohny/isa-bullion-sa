@@ -2,10 +2,7 @@
 /* Template Name: Home */
 ?>
 
-<?php 
-    get_header(); 
-    $current_language = wpml_get_current_language();
-?>
+<?php get_header(); ?>
 
 <!-- Hero -->
 <div class="page-banner hero position-relative mt-100">
@@ -27,31 +24,20 @@
                             target="<?php echo esc_attr( $link_target ); ?>"><?php the_field('button_one_label') ?></a>
                         <?php endif; ?>
                         <?php 
-                            $class_to_add = $current_language == 'ar' ? 'rtl' : '';
                             $link = get_field('button_two_link');
                             if( $link ): 
                                 $link_url = $link['url'];
                                 $link_title = $link['title'];
                                 $link_target = $link['target'] ? $link['target'] : '_self';
                             ?>
-                        <a class="ml-20 btn bp-btn bp-btn-arrow <?php echo $class_to_add; ?>"
+                        <a class="ml-20 btn bp-btn bp-btn-arrow"
                             href="<?php echo esc_url( $link_url ); ?>"
                             target="<?php echo esc_attr( $link_target ); ?>"><?php the_field('button_two_label') ?></a>
                         <?php endif; ?>
                 </div>
             </div>
             <div class="col-xl-8 col-lg-12">
-                <?php 
-                    if ($current_language !== 'ar') {
-                        ?>
                 <div class="hero-dashboard"></div>
-                <?php
-                    } else {
-                        ?>
-                <div class="hero-dashboard-ar"></div>
-                <?php
-                    }
-                ?>
             </div>
         </div>
     </div>
@@ -176,18 +162,7 @@
                                     pellentesque quam
                                     magna nibh diam tempor.</p>
 
-                                <?php 
-                            if ($current_language !== 'ar') {
-                                ?>
-                                <button class="btn bp-btn bp-btn-arrow mt-10">Read article</button>
-                                <?php
-                            } else {
-                                ?>
-                                <button class="btn bp-btn bp-btn-arrow rtl mt-10">Read article</button>
-                                <?php
-                            }
-                        ?>
-
+                                    <button class="btn bp-btn bp-btn-arrow mt-10">Read article</button>
                             </div>
                             <?php 
                                 if ($i !== 2) {
@@ -215,23 +190,10 @@
                                 <div class="text-strong mt-15">Economic calendar</div>
                                 <p class="mt-10 text-small">Upcoming financial-economic market events and news.</p>
                                 <div class="d-flex">
-                                    <?php 
-                                        if ($current_language !== 'ar') {
-                                            ?>
                                     <a class="btn bp-btn bp-btn-arrow"
                                         href="<?php echo get_home_url() . '/live-economic-calendar'; ?>">
                                         View calendar
                                     </a>
-                                    <?php
-                                        } else {
-                                            ?>
-                                    <a class="btn bp-btn bp-btn-arrow rtl"
-                                        href="<?php echo get_home_url() . '/live-economic-calendar'; ?>">
-                                        View calendar
-                                    </a>
-                                    <?php
-                                        }
-                                    ?>
                                 </div>
                             </div>
                             <div class="bp-line"></div>
@@ -254,21 +216,9 @@
                                 <div class="text-strong mt-15">Latest daily report</div>
                                 <p class="mt-10 text-small">View latest insights and analysis of the current market.</p>
                                 <div class="d-flex">
-                                    <?php 
-                                        if ($current_language !== 'ar') {
-                                            ?>
                                     <a class="btn bp-btn bp-btn-arrow" href="<?php the_permalink(); ?>">
                                         View report
                                     </a>
-                                    <?php
-                                        } else {
-                                            ?>
-                                    <a class="btn bp-btn bp-btn-arrow rtl" href="<?php the_permalink(); ?>">
-                                        View report
-                                    </a>
-                                    <?php
-                                        }
-                                    ?>
                                 </div>
                             </div>
 
@@ -283,23 +233,10 @@
                                 <div class="text-strong mt-15">Historical reports</div>
                                 <p class="mt-10 text-small">Browse through our market reports in a calendar view.</p>
                                 <div class="d-flex">
-                                    <?php 
-                                        if ($current_language !== 'ar') {
-                                            ?>
                                     <a class="btn bp-btn bp-btn-arrow"
                                         href="<?php echo get_home_url() . '/reports'; ?>">
                                         View reports
                                     </a>
-                                    <?php
-                                        } else {
-                                            ?>
-                                    <a class="btn bp-btn bp-btn-arrow rtl"
-                                        href="<?php echo get_home_url() . '/reports'; ?>">
-                                        View reports
-                                    </a>
-                                    <?php
-                                        }
-                                    ?>
                                 </div>
                             </div>
 
@@ -374,8 +311,8 @@
                             ?>
                         <div class="d-flex align-items-center mb-20">
                             <div
-                                class="icon bullet-point 
-                                <?php echo $card_color == 'secondary' ? 'primary' : ''; echo $current_language == 'ar' ? ' ml-15' : ' mr-15'; ?>">
+                                class="icon bullet-point mr-15
+                                <?php echo $card_color == 'secondary' ? 'primary' : ''; ?>">
                             </div>
                             <div class="<?php echo $card_color == 'primary' ? 'text-white' : '' ?>">
                                 <?php the_sub_field('rates_card_rate') ?>

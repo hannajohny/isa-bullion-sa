@@ -2,10 +2,7 @@
 /* Template Name: Pricing */
 ?>
 
-<?php 
-    get_header(); 
-    $current_language = wpml_get_current_language();
-?>
+<?php get_header(); ?>
 
 <div class="top-section">
 
@@ -133,29 +130,9 @@
             ?>
             <div class="d-flex p-15">
 
-                <?php 
-                    if ($current_language === 'ar' && $action_type === 'Buying') {
-                        ?>
-                     <div class="col">
-                        <div>شراء</div>
-                    </div>
-
-                <?php
-                    } elseif ($current_language === 'ar' && $action_type === 'Selling') {
-                        ?>
-                     <div class="col">
-                        <div>بيع</div>
-                    </div>
-                <?php
-                    } else {
-                        ?>
-                            <div class="col">
-                                <div><?php the_sub_field('commodity_action_type'); ?></div>
-                            </div>
-                        <?php
-                    }
-                ?>
-                
+                <div class="col">
+                    <div><?php the_sub_field('commodity_action_type'); ?></div>
+                </div>
            
 
                 <div class="col">

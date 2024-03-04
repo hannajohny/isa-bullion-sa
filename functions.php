@@ -58,23 +58,6 @@ function add_thumbnail_column($columns){
   return $columns;
 }
 
-function wpml_language_switcher() {
-  $languages = apply_filters( 'wpml_active_languages', NULL, 'order=name' );
-
-  if (!empty($languages)) {
-    foreach ($languages as $language) {
-        ?>
-<li>
-  <a class="dropdown-item bp-dropdown-item text-strong bp-dropdown-item"
-    href="<?php echo esc_url($language['url']); ?>">
-    <?php echo esc_html($language['native_name']); ?>
-  </a>
-</li>
-<?php
-    }
-}
-}
-
 function disable_new_posts_for_nav_menu() {
   $post_type = 'nav-menu'; 
   $count_posts = wp_count_posts($post_type);

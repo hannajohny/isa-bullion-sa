@@ -151,19 +151,7 @@
                 <div class="d-flex">
                     <a href="https://trade.isabullion.com/" target="_blank" class="btn bp-btn btn-primary bp-btn-link">Login</a>
                     <a href="<?php echo get_home_url() . '/signup/lets-get-started'; ?>" class="btn bp-btn btn-primary ml-10 mr-10">Open account</a>
-                    <div class="dropdown">
-                        <?php 
-                            $current_language = wpml_get_current_language();
-                        ?>
-                        <button class="btn bp-btn btn-secondary btn-lang-dd bp-dropdown-toggle" type="button"
-                            data-bs-toggle="dropdown">
-
-                            <?php echo mb_convert_case($current_language, MB_CASE_TITLE, "UTF-8"); ?>
-                        </button>
-                        <ul class="dropdown-menu bp-btn-dropdown-menu box-shadow">
-                            <?php wpml_language_switcher(); ?>
-                        </ul>
-                    </div>
+    
                 </div>
 
             </div>
