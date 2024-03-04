@@ -1,0 +1,20 @@
+name: Push Website to cPanel
+on:
+  push:
+    branches:
+      - dev
+jobs:
+  ftp-deploy:
+    name: ftp-deploy
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2.1.0
+        with:
+          fetch-depth: 2
+      - name: ftp-deploy
+        uses: SamKirkland/FTP-Deploy-Action@4.3.0
+        with:
+          server: ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.FTP_USER }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          server-dir: /wp-content/themes/isa-bullion/
