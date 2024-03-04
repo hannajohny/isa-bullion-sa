@@ -17,7 +17,3 @@
     endforeach; 
     ?>
 </ul>
-
-<div class="tab-content box-shadow faqs-tab-container">
-    <!-- Content goes in here using JS -->
-</div>

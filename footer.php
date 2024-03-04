@@ -1,3 +1,12 @@
+<?php 
+    $current_language = wpml_get_current_language();
+    if ($current_language == 'ar') { 
+        $accordion_button_arabic_class = 'accordion-button-ar';
+    } else {
+        $accordion_button_arabic_class = '';
+    }
+?>
+
 <div class="fluid-container bg-primary footer-container">
     <footer>
         <div class="container footer-container p-0">
@@ -43,7 +52,7 @@
                                     ?>
                             <div class="d-flex flex-column flex-grow-1">
                                 <div class="d-block d-lg-none d-xl-none">
-                                    <button class="accordion-button footer-menu-title collapsed" type="button"
+                                    <button class="accordion-button footer-menu-title collapsed <?php echo $accordion_button_arabic_class; ?>" type="button"
                                         data-bs-toggle="collapse" data-bs-target="#fm-<?php echo $counter; ?>">
                                         <?php echo $item_label; ?>
                                     </button>
@@ -89,7 +98,7 @@
 
                             <div class="">
                                 <div class="d-block d-lg-none d-xl-none">
-                                    <button class="accordion-button footer-menu-title collapsed" type="button"
+                                    <button class="accordion-button footer-menu-title collapsed <?php echo $accordion_button_arabic_class; ?>" type="button"
                                         data-bs-toggle="collapse" data-bs-target="#address-fm">
                                          <?php the_field('address_label', 'option') ?>  
                                     </button>
@@ -124,7 +133,7 @@
             <div class="row align-items-center justify-content-between">
 
                 <div class="col p-0">
-                    <div class="text-white">© <?php the_field('copyrights_label', 'option'); ?></div>
+                    <div class="text-white"><?php the_field('copyrights_label', 'option'); ?></div>
                 </div>
                 <div class="col d-flex justify-content-end p-0">
                     <div class="row d-flex w-100 align-items-center justify-content-end">
@@ -180,7 +189,7 @@
                 </div>
 
                 <div class="row">
-                    <div class="text-white text-center">© <?php the_field('copyrights_label', 'option'); ?>
+                    <div class="text-white text-center"><?php the_field('copyrights_label', 'option'); ?>
                     </div>
                 </div>
                 <div class="row">
@@ -217,17 +226,19 @@
     const homeUrl = "<?php echo get_home_url(); ?>";
 </script>
 
+
 <script src="<?php echo get_template_directory_uri() . '/dist/js/nav-menu.js'?>" type="text/javascript"></script>
 <script src="<?php echo get_template_directory_uri() . '/dist/js/owl.carousel.min.js'?>" type="text/javascript">
 </script>
 <script src="<?php echo get_template_directory_uri() . '/dist/js/app.js'?>" type="text/javascript"></script>
 <script src="<?php echo get_template_directory_uri() . '/dist/js/faqs.js'?>" type="text/javascript"></script>
+<script src="<?php echo get_template_directory_uri() . '/dist/js/articles.js'?>" type="text/javascript"></script>
+<script src="<?php echo get_template_directory_uri() . '/dist/js/featured-articles.js'?>" type="text/javascript"></script>
+<script src="<?php echo get_template_directory_uri() . '/dist/js/videos.js'?>" type="text/javascript"></script>
 
 <script src="<?php echo get_template_directory_uri() . '/dist/js/cal-core.min.js'?>" type="text/javascript"></script>
-
-
 <script src="<?php echo get_template_directory_uri() . '/dist/js/calendar.js'?>" type="text/javascript"></script>
-
+<script src="<?php echo get_template_directory_uri() . '/dist/js/map-box.js'?>" type="module"></script>
 
 <?php wp_footer(); ?>
 

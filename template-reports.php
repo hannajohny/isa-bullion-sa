@@ -6,13 +6,11 @@
 
 <div class="container">
     <div class="top-section">
-        <h1 class="text-large text-center mb-20 mt-40">Market Reports</h1>
+        <h1 class="text-large text-center mb-20 mt-40"><?php the_title(); ?></h1>
         <div class="d-flex align-items-center justify-content-center">
-            <p class="text-center mb-60" style="max-width: 600px;">
-                Keep your business updated with our daily, weekly,
-                and monthly market reports with insights and forecast movement of different commodities to seize market
-                opportunities and protect yourself from downside risk.
-            </p>
+            <div class="text-center mb-60" style="max-width: 600px;">
+                <?php the_content(); ?>
+            </div>
         </div>
     </div>
 </div>

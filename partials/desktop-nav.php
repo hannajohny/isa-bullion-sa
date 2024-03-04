@@ -1,7 +1,7 @@
 <div class="d-none d-xl-block fixed-top bg-white box-shadow">
     <?php include 'trading-view-top-bar.php' ?>
 
-    <div class="container p-0">
+    <div class="container">
         <nav class="navbar-expand-lg">
             <div class="d-flex align-items-center justify-content-between">
                 <div class="d-flex">
@@ -76,10 +76,10 @@
                                     $item_label = get_sub_field('item_label');
                                     $item_link = get_sub_field('item_link'); 
                                     $have_sub_menu = get_sub_field('have_sub_menu');     
+                                    $have_sub_menu_call_to_action = get_sub_field('have_sub_menu_call_to_action');     
                                     if ($have_sub_menu) {
-                                $counter_menu++;
-
-                                        ?>
+                                    $counter_menu++;
+                                ?>
                                 <div class="bp-dropdown-menu" id="<?php echo $counter_menu; ?>"
                                     data-sub="<?php echo $counter_menu; ?>">
                                     <div class="bp-dropdown-menu__content">
@@ -96,7 +96,7 @@
                                                 <div class="row">
                                                     <a class="menu-item-action" href="<?php echo $sub_menu_link; ?>">
                                                         <div class="text-strong"><?php echo $sub_menu_label; ?></div>
-                                                        <div class="text-small text-grey">
+                                                        <div class="text-small text-grey text-strong">
                                                             <?php echo $sub_menu_description; ?></div>
                                                     </a>
                                                 </div>
@@ -107,17 +107,25 @@
                                             </div>
                                         </div>
                                         <div class="bottom-section bg-light">
-                                            <div class="row">
+                                        <?php 
+                                            if ($have_sub_menu_call_to_action):
+                                        ?>
+                                            <div class="row p-20">
                                                 <div class="col d-flex align-items-center">
-                                                    <p class="text-strong text-small">
-                                                        Need to know more?
+                                                    <p class="text-strong p-0 m-0">
+                                                        <?php the_sub_field('sub_menu_call_to_action_text'); ?>
                                                     </p>
                                                 </div>
                                                 <div class="col d-flex justify-content-end">
                                                     <a class="btn bp-btn btn-primary"
-                                                        href="<?php echo get_home_url() . '/contact'; ?>">Contact Us</a>
+                                                        href="<?php the_sub_field('sub_menu_call_to_action_link'); ?>">
+                                                        <?php the_sub_field('sub_menu_call_to_action_button_label'); ?>
+                                                    </a>
                                                 </div>
                                             </div>
+                                            <?php 
+                                            endif;
+                                            ?>
                                         </div>
                                     </div>
                                 </div>
@@ -141,8 +149,8 @@
                 </div>
 
                 <div class="d-flex">
-                    <button class="btn bp-btn btn-primary bp-btn-link">Login</button>
-                    <button class="btn bp-btn btn-primary ml-10 mr-10">Open account</button>
+                    <a href="https://trade.isabullion.com/" target="_blank" class="btn bp-btn btn-primary bp-btn-link">Login</a>
+                    <a href="<?php echo get_home_url() . '/signup/lets-get-started'; ?>" class="btn bp-btn btn-primary ml-10 mr-10">Open account</a>
                     <div class="dropdown">
                         <?php 
                             $current_language = wpml_get_current_language();

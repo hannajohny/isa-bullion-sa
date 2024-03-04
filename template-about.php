@@ -6,83 +6,63 @@
 
 <div class="top-section">
 
-    <div class="container p-0">
-        <h1 class="text-large">About ISA Bullion</h1>
+    <div class="container">
+        <h1 class="text-large pt-40"><?php the_title(); ?></h1>
         <div class="row mt-40">
-            <div class="col">
-                <h2 class="text-medium text-strong mb-20">Who we are</h2>
+            <div class="col-md-6">
+                <h2 class="text-medium text-strong mb-20">
+                    <?php the_field('who_we_are_title'); ?>
+                </h2>
                 <p>
-                    Leaders in the bullion industry for 14 years, the Zunaid Moti Family is dedicated to providing a
-                    platform that allows everyone, from anywhere and at any time, to trade in physical gold and silver
-                    with trust and reliability, ISA Bullion is at the forefront of the industry.
-                    <br><br>
-                    As a forward-thinking company, ISA Bullion empowers you to safeguard your wealth with our accessible
-                    and user-friendly technologies that incorporate innovative features, catering to both experienced
-                    investors and newcomers, ensuring convenience for all.
+                    <?php the_field('who_we_are_description'); ?>
                 </p>
             </div>
-            <div class="col">
-                <h2 class="text-medium text-strong mb-20">What we do</h2>
+            <div class="col-md-6">
+                <h2 class="text-medium text-strong mb-20"><?php the_field('what_we_do_title'); ?></h2>
                 <p>
-                    Today, ISA Bullion expertly helps clients worldwide gain access to, trade and independently store
-                    physical gold and silver on the go. With our trading App, you can make lucrative trades in precious
-                    metals via a number of trading options and styles.
-                    <br><br>
-                    In addition, we provide an array of services related to your valuable assets such as trading,
-                    instant execution, guaranteed two-way pricing, vaulting and insurance of actual physical bullions no
-                    matter where you are on the globe.
+                    <?php the_field('what_we_do_description'); ?>
                 </p>
             </div>
         </div>
 
-        <div class="row justify-content-center mt-60 mb-80">
-            <div class="col">
+        <div class="row justify-content-center mt-60 mb-60">
+            <div class="col-md-6 mb-20">
                 <div class="card bp-card bp-card-rounded bp-card-top-border-secondary box-shadow p-30 bg-white h-100">
                     <div class="col d-flex flex-column">
                         <div class="h-100">
-                            <div class="text-medium text-strong mb-20">Our mission and values</div>
+                            <h2 class="text-medium text-strong mb-20"><?php the_field('mission_title'); ?></h2>
                             <p>
-                                We are driven by our customer-centric approach to simplify the process of physical gold
-                                trading
-                                with the purpose of empowering individuals worldwide by offering a trusted platform to
-                                safeguard
-                                wealth and embrace financial freedom.
-                                <br><br>
-                                With our ISA Bullion platform, you can easily trade in gold and silver with lower fees,
-                                for more
-                                profit.
+                                <?php the_field('mission_description'); ?>
                             </p>
 
                         </div>
                         <div class="d-flex mt-20">
-                            <button class="btn bp-btn btn-secondary">Open account</button>
-                            <button class="btn bp-btn bp-btn-arrow ml-20">Try a demo</button>
+                            <a class="btn bp-btn btn-secondary" href="<?php the_field('mission_button_one_link') ?>">
+                                <?php the_field('mission_button_one_label'); ?>
+                            </a>
+                            <a class="btn bp-btn bp-btn-arrow ml-20" href="<?php the_field('mission_button_two_link'); ?>" target="_blank">
+                                <?php the_field('mission_button_two_label'); ?>
+                            </a>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="col">
+            <div class="col-md-6 mb-20">
                 <div class="card bp-card bp-card-rounded bp-card-top-border-secondary box-shadow p-30 bg-primary h-100">
 
                     <div class="col d-flex flex-column">
                         <div class="h-100">
-                            <div class="text-medium text-white text-strong mb-20">Our Story</div>
+                            <div class="text-medium text-white text-strong mb-20"><?php the_field('story_title'); ?>
+                            </div>
                             <p class="text-white">
-                                We thought, “what is the one thing we can provide that brings prosperity to everyone who
-                                possesses it? Inquiring in the city of Gold, the obvious answer was staring right back
-                                at us.
-                                Gold. An infinitely sought after asset since time immemorial, whose purity and value are
-                                proof
-                                of actual wealth. Thus, we began striving with a vision to make Gold accessible to
-                                everyone in
-                                the world. And the result?
-                                <br><br>
-                                ISA Bullion – A tech-driven bullion provider based in the thriving metropolis of Dubai.
+                                <?php the_field('story_description'); ?>
                             </p>
 
                         </div>
                         <div class="d-flex mt-20">
-                            <button class="btn bp-btn btn-white">Login</button>
+                            <a class="btn bp-btn btn-white" href="<?php the_field('story_button_link'); ?>" target="_blank">
+                                <?php the_field('story_button_label'); ?>
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -91,80 +71,73 @@
     </div>
 </div>
 
-<div class="bg-primary pt-60 pb-60">
+<div class="bg-primary pt-60 pb-20">
     <div class="container">
         <div class="row justify-content-center">
-            <div class="col d-flex flex-column">
+
+            <?php 
+            if( have_rows('benefits') ):
+                while( have_rows('benefits') ) : the_row();
+                ?>
+            <div class="col-md-6 d-flex flex-column mb-40">
                 <div class="h-100">
-                    <div class="icon bg-secondary mb-30"></div>
-                    <div class="text-medium text-white mb-20">Guaranteed right to<br>withdraw physical Bullion anytime
+                    <div class="icon mb-30" style="background-image: url('<?php the_sub_field('benefits_icon'); ?>')">
                     </div>
-                    <p class="text-white">
-                        Our platform offers you the facility of guaranteed two way pricing which means the right to
-                        withdraw
-                        physical bullion any time you want in UAE.
-                        <br><br>
-                        We strictly abide by international trading standards to ensure swift demand and supply of
-                        bullion.
+                    <div class="text-medium text-white mb-20" style="max-width: 300px;">
+                        <?php the_sub_field('benefits_title'); ?>
+                    </div>
+                    <p class="text-white" style="max-width:600px">
+                        <?php the_sub_field('benefits_description'); ?>
                     </p>
                 </div>
                 <div class="d-flex mt-20">
-                    <button class="btn bp-btn btn-secondary">Open account</button>
+                    <a class="btn bp-btn btn-secondary" href="<?php the_sub_field('benefits_button_link'); ?>">
+                        <?php the_sub_field('benefits_button_label'); ?>
+                    </a>
                 </div>
             </div>
-            <div class="col d-flex flex-column align-items-center justify-content-center">
-                <div class="vertical-line"></div>
-            </div>
-            <div class="col d-flex flex-column">
-                <div class="h-100">
-                    <div class="icon bg-secondary mb-30"></div>
-                    <div class="text-medium text-white mb-20">We can buy back your<br> Bullion instantly</div>
-                    <p class="text-white">
-                        You can directly sell your purchased precious metals instantly from your bullion account.
-                        <br><br>
-                        We guarantee to buy back the asset any time you wish to sell.
-                    </p>
-                </div>
-                <div class="d-flex mt-20">
-                    <button class="btn bp-btn btn-white">Login</button>
-                </div>
-            </div>
+
+            <?php
+                endwhile;
+            endif;
+        ?>
+
         </div>
     </div>
 </div>
 
 <!-- Management team -->
-<div class="bg-light pt-80 pb-80">
+<div class="bg-light pt-80 pb-60">
     <div class="container">
-        <h1 class="text-large mb-40">Our management team</h1>
+        <h1 class="text-large mb-40"><?php the_field('management_section_title'); ?></h1>
         <p style="max-width: 600px">
-            Explore the profiles of our key executives who bring a wealth of experience and commitment to every facet of
-            ISA Bullion.
-            <br><br>
-            Their expertise ensures that ISA Bullion remains at the forefront of the bullion market.
+            <?php the_field('management_section_description'); ?>
         </p>
         <div class="row justify-content-center mt-40">
+
             <?php 
-                for ($i=0; $i < 3 ; $i++) { 
-                    ?>
-            <div class="col">
+                if( have_rows('management_members') ):
+                    while( have_rows('management_members') ) : the_row();
+                ?>
+            <div class="col-md-4 mb-20">
                 <div class="bg-white bp-card bp-card-rounded box-shadow mb-20 h-100">
-                    <div class="card-image card-image-profile bg-primary position-relative">
-                        <div class="icon linkedin-profile bg-white position-absolute"></div>
+                    <div class="card-image card-image-profile position-relative"
+                        style="background-image: url('<?php the_sub_field('member_photo'); ?>')">
+                        <a href="<?php the_sub_field('linkedin_link'); ?>" target="_blank"
+                            class="icon linkedin-profile bg-white position-absolute"></a>
                     </div>
                     <div class="p-30">
-                        <div class="text-strong text-medium">Zunaid Aziz Moti</div>
-                        <div class="text-strong text-secondary mb-20">Chief Executive Office</div>
+                        <div class="text-strong text-medium"><?php the_sub_field('member_name'); ?></div>
+                        <div class="text-strong text-secondary mb-20"><?php the_sub_field('member_title'); ?></div>
                         <p class="m-0">
-                            Lorem ipsum dolor sit amet consectetur. Aliquet condimentum praesent aliquet arcu. Lorem
-                            ipsum
-                            dolor sit amet consectetur.
+                            <?php the_sub_field('member_bio'); ?>
                         </p>
                     </div>
                 </div>
             </div>
             <?php
-                }
+                    endwhile;
+                endif;
             ?>
         </div>
     </div>
@@ -172,20 +145,145 @@
 
 <!-- Trade license -->
 <div class="container pt-80 pb-80">
-    <h1 class="text-large mb-40">Trade license</h1>
-    <p>We are a registered and regulated trading company under the rules of the DMCC Dubai Authority.</p>
-    <p>Our license number is <span class="text-strong">DMCC-31227</span></p>
+    <h1 class="text-large mb-40"><?php the_field('trade_license_section_title'); ?></h1>
+    <p style="max-width: 550px;"><?php the_field('trade_license_description'); ?></p>
     <div class="d-flex mt-40">
-        <button class="btn bp-btn btn-secondary">View trade license</button>
-        <button class="btn bp-btn btn-primary bp-btn-link ml-20">Verify us</button>
+        <a class="btn bp-btn btn-secondary" type="button" data-bs-toggle="modal"
+            data-bs-target="#view-trade-license">View trade license</a>
+        <a class="btn bp-btn btn-primary ml-20" data-bs-toggle="modal" data-bs-target="#verify-trade-license">Verify
+            us</a>
     </div>
 </div>
 
+<!-- Modal - View TL -->
+<div class="modal fade" id="view-trade-license" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+
+            <div class="modal-body">
+                <div class="trade-license"></div>
+            </div>
+            <div class="modal-footer justify-content-center">
+                <button type="button" class="btn bp-btn btn-secondary" data-bs-dismiss="modal">Ok</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal - Verify TL -->
+<div class="modal fade" id="verify-trade-license" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+
+
+
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <div class="text-medium text-strong">Verify our trade license</div>
+
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+
+            <div class="modal-body">
+                <div>Please follow these steps to verify our trade license</div>
+
+                <div class="row mt-20 align-items-center">
+                    <div class="col-lg-6">
+                        <div class="row align-items-center">
+                            <div class="col-2 d-flex flex-column align-items-center justify-content-center">
+                                <div class="text-strong tl-steps-numbering">1</div>
+                            </div>
+                            <div class="col">
+                                <div>Visit DMCC website</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-5 col-sm-8">
+                        <div class="d-block d-lg-none mt-20"></div>
+                        <a href="https://dmcc.ae/public-register" target="_blank"
+                            class="btn bp-btn btn-primary bp-btn-link mr-20 justify-content-start">https://dmcc.ae/public-register</a>
+                    </div>
+                </div>
+
+                <div class="row mt-10 align-items-center">
+                
+                    <div class="col-lg-6">
+                        <div class="row align-items-center">
+                            <div class="col-2 d-flex flex-column align-items-center justify-content-center">
+                                <div class="text-strong tl-steps-numbering">2</div>
+                            </div>
+                            <div class="col">
+                                <div>Enter our license number</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                    <div class="d-block d-lg-none mt-10"></div>
+
+                        <div class="d-flex align-items-center">
+                            <div class="text-strong ml-10">DMCC-31227</div>
+                            <div class="icon icon-copy-tl ml-20" id="copy-tl-number"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row mt-15 align-items-center">
+
+                            
+                <div class="col-lg-6 col-md-12">
+                        <div class="row align-items-center">
+                            <div class="col-2 d-flex flex-column align-items-center justify-content-center">
+                                <div class="text-strong tl-steps-numbering">3</div>
+                            </div>
+                            <div class="col">
+                                <div>Click on the Search button</div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="verify-tl mt-30"></div>
+
+            </div>
+            <div class="modal-footer justify-content-center p-20">
+                <a href="https://dmcc.ae/public-register" target="_blank"
+                    class="btn bp-btn btn-secondary bp-btn-link">Verify us</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+
 <!-- Partners -->
-<div class="bg-light">
-    <div class="container pt-80 pb-80">
-        <h3 class="text-center text-large">Our partners</h3>
-        <div class="text-center text-secondary text-medium text-strong">Trust in our commitment to transparency and, security</div>
+
+<div class="bg-light pt-80 pb-60">
+    <div class="container">
+        <div class="col d-flex flex-column justify-content-center align-items-center">
+            <h1 class="text-center text-large"><?php the_field('partners_header'); ?></h1>
+            <div class="text-center text-secondary text-medium text-strong" style="max-width:600px;">
+                <?php the_field('partners_sub_header'); ?>
+            </div>
+        </div>
+
+        <div class="row mt-60">
+
+            <?php
+                if( have_rows('partners_logos') ):
+                    while( have_rows('partners_logos') ) : the_row();
+                ?>
+            <div class="col d-flex flex-column align-items-center justify-content-center mb-20">
+                <div class="icon partners" style="background-image: url('<?php the_sub_field('partner_logo'); ?>')">
+                </div>
+            </div>
+            <?php
+                    
+            endwhile;
+            else :
+            endif;
+        ?>
+        </div>
     </div>
 </div>
 

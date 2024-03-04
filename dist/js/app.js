@@ -1,6 +1,8 @@
 jQuery(document).ready(($) => {
   const owlTestimonials = $('.owl-carousel-testimonials');
-  const owlFeaturedCompanies = $('.owl-carousel-featured-companies');
+  (owlFeaturedArticles = $('.owl-carousel-featured-articles')),
+    (copyTradeLicenseButton = $('#copy-tl-number')),
+    (owlFeaturedCompanies = $('.owl-carousel-featured-companies'));
 
   owlTestimonials.owlCarousel({
     loop: true,
@@ -34,6 +36,12 @@ jQuery(document).ready(($) => {
     },
   });
 
+  owlFeaturedArticles.owlCarousel({
+    loop: true,
+    margin: 0,
+    items: 1,
+  });
+
   owlFeaturedCompanies.owlCarousel({
     loop: true,
     margin: 0,
@@ -61,5 +69,10 @@ jQuery(document).ready(($) => {
         items: 5,
       },
     },
+  });
+
+  copyTradeLicenseButton.click(() => {
+    navigator.clipboard.writeText('DMCC-31227');
+    copyTradeLicenseButton.addClass('copied');
   });
 });

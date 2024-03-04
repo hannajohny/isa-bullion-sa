@@ -1,7 +1,16 @@
-<div class="container-fluid nav-bar bp-navbar fixed-top d-block d-xl-none">
-    <div class="row align-items-center">
+<?php 
+    $current_language = wpml_get_current_language();
+    if ($current_language == 'ar') { 
+        $accordion_button_arabic_class = 'accordion-button-ar';
+    } else {
+        $accordion_button_arabic_class = '';
+    }
+?>
+
+<div class="container-fluid nav-bar bp-navbar fixed-top d-block d-xl-none bg-primary">
+    <div class="row align-items-center h-100">
         <div class="col">
-            <a class="logo ml-10" href="<?php echo get_home_url(); ?>"> </a>
+            <a class="logo secondary ml-10" href="<?php echo get_home_url(); ?>"> </a>
         </div>
         <div class="col d-flex justify-content-end">
             <button type="button" class="btn menu-trigger" data-bs-toggle="modal" data-bs-target="#mobile-menu-modal">
@@ -24,156 +33,125 @@
                     <div class="bg-white w-100 h-100">
                         <ul
                             class="navbar-nav me-auto mb-2 mb-lg-0 w-100 d-flex align-items-center justify-content-center">
-                            <li class="nav-item pl-20">
-                                <a class="bp-nav-link text-uppercase" style="display: block;" href="<?php echo get_home_url() . '/'?>">Home</a>
-                            </li>
 
-                            <div class="accordion w-100" id="accordion-menu">
+                            <?php
+                            $args = array(
+                                'post_type' => 'nav-menu',
+                                'post_status' => 'publish',
+                                'posts_per_page' => '1',
+                            );
+                            $posts_loop = new WP_Query( $args );
+                            $counter = 0;
+                            if ( $posts_loop->have_posts() ) :
+                                while ( $posts_loop->have_posts() ) : $posts_loop->the_post();
+                                if( have_rows('menu_items') ):
+                                    while( have_rows('menu_items') ) : the_row();
+                                        $item_label = get_sub_field('item_label');
+                                        $item_link = get_sub_field('item_link'); 
+                                        $have_sub_menu = get_sub_field('have_sub_menu');     
+                                        if ($have_sub_menu) {
+                                            $counter++;
+                                        ?>
 
-                                <div class="accordion-item border-0">
-                                    <h2 class="accordion-header" id="headingOne">
-                                        <button class="accordion-button collapsed text-uppercase" type="button"
-                                            data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true"
-                                            aria-controls="collapseOne">
-                                            About
-                                        </button>
-                                    </h2>
-                                    <div id="collapseOne" class="accordion-collapse collapse"
-                                        aria-labelledby="headingOne" data-bs-parent="#accordion-menu">
-                                        <div class="accordion-body">
-                                         
-                                            <div class="list-group list-group-light">
-                                                <a href="<?php echo get_home_url() . '/about'?>">
-                                                    <div class="text-primary text-strong"> About Us</div>
-                                                </a>
-                                                <div class="line mt-15 mb-15"></div>
+                                        <div class="accordion w-100" id="accordion-menu-<?php echo $counter; ?>">
 
-                                                <a href="<?php echo get_home_url() . '/history'?>">
-                                                    <div class="text-primary text-strong">Our History</div>
-                                                </a>
-                                                <div class="line mt-15 mb-15"></div>
+                                            <div class="accordion-item border-0">
+                                                <h2 class="accordion-header p-0" id="heading-<?php echo $counter; ?>">
+                                                    <button class="accordion-button collapsed <?php echo $accordion_button_arabic_class; ?>" type="button"
+                                                        data-bs-toggle="collapse" data-bs-target="#collapse-<?php echo $counter; ?>"
+                                                        aria-expanded="false" aria-controls="collapse-<?php echo $counter; ?>">
+                                                        <?php echo $item_label; ?>
+                                                    </button>
+                                                </h2>
+                                                <div id="collapse-<?php echo $counter; ?>" class="accordion-collapse collapse"
+                                                    aria-labelledby="heading-<?php echo $counter; ?>"
+                                                    data-bs-parent="#accordion-menu-<?php echo $counter; ?>">
+                                                    <div class="accordion-body">
+                                                        <div class="list-group list-group-light">
 
-                                                <a href="<?php echo get_home_url() . '/message-from-founders'?>">
-                                                    <div class="text-primary text-strong">Message From Our Founders</div>
-                                                </a>
-                                                <div class="line mt-15 mb-15"></div>
-                                                <a href="<?php echo get_home_url() . '/mantra-and-values'?>">
-                                                    <div class="text-primary text-strong">Mantra and Values</div>
-                                                </a>
-                                                <div class="line mt-15 mb-15"></div>
+                                                            <?php
+
+                                                                    if( have_rows('sub_menus') ){
+                                                                        while( have_rows('sub_menus') ) : the_row();
+                                                                        $sub_menu_label = get_sub_field('sub_menu_label');
+                                                                        $sub_menu_link = get_sub_field('sub_menu_link');
+                                                                    ?>
+
+                                                            <a href="<?php echo $sub_menu_link; ?>">
+                                                                <div class="text-primary text-strong mt-10 mb-10"
+                                                                    style="font-size:14px;"><?php echo $sub_menu_label; ?></div>
+                                                            </a>
+
+                                                            <?php 
+                                                                                endwhile;
+                                                                            }
+                                                                        ?>
+                                                        </div>
+                                                    </div>
+                                                </div>
                                             </div>
+
                                         </div>
-                                    </div>
-                                </div>
 
-                                <div class="accordion-item border-0">
-                                    <h2 class="accordion-header" id="headingTwo">
-                                        <button class="accordion-button collapsed text-uppercase" type="button"
-                                            data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="true"
-                                            aria-controls="collapseTwo">
-                                            Company
-                                        </button>
-                                    </h2>
-                                    <div id="collapseTwo" class="accordion-collapse collapse"
-                                        aria-labelledby="headingTwo" data-bs-parent="#accordion-menu">
-                                        <div class="accordion-body">
-                                            <div class="list-group list-group-light">
-                                                <a href="<?php echo get_home_url() . '/therapeutic-areas'; ?>">
-                                                    <div class="text-primary text-strong">Therapeutic Areas</div>
-                                                </a>
-                                                <div class="line mt-15 mb-15"></div>
-
-                                                <a href="<?php echo get_home_url() . '/capabilities-and-expertise'; ?>">
-                                                    <div class="text-primary text-strong">Our Capabilities and Expertise</div>
-                                                </a>
-                                                <div class="line mt-15 mb-15"></div>
-
-                                                <a href="<?php echo get_home_url() . '/partnerships'; ?>">
-                                                    <div class="text-primary text-strong">Our Partnerships</div>
-                                                </a>
-                                                <div class="line mt-15 mb-15"></div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="accordion-item border-0">
-                                    <h2 class="accordion-header" id="headingThree">
-                                        <button class="accordion-button collapsed text-uppercase" type="button"
-                                            data-bs-toggle="collapse" data-bs-target="#collapseThree"
-                                            aria-expanded="true" aria-controls="collapseThree">
-                                            Views and News
-                                        </button>
-                                    </h2>
-                                    <div id="collapseThree" class="accordion-collapse collapse"
-                                        aria-labelledby="headingThree" data-bs-parent="#accordion-menu">
-                                        <div class="accordion-body">
-                                            <div class="list-group list-group-light">
-                                                <?php
-                                            $args = array(
-                                                'post_type' => 'news',
-                                                'post_status' => 'publish',
-                                                'orderby' => 'date',
-                                                'order' => 'DESC',
-                                                'posts_per_page' => '4',
-                                            );
-                                            $posts_loop = new WP_Query( $args );
-                                            if ( $posts_loop->have_posts() ) :
-                                                while ( $posts_loop->have_posts() ) : $posts_loop->the_post();
-                                                $image = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'single-post-thumbnail' );
+                                        <?php
+                                            }  else {
+                                        if ($current_language === 'ar') {
                                             ?>
-                                                <a href="<?php the_permalink(); ?>">
-                                                    <div class="text-primary text-strong"><?php the_title(); ?></div>
+                                             <li class="nav-item pl-20">
+                                                <a class="bp-nav-link" style="display: block; text-align: right; margin-right: 20px !important;" href="<?php echo $item_link; ?>">
+                                                    <?php echo $item_label; ?>
                                                 </a>
-                                                <div class="line mt-15 mb-15"></div>
-                                                <?php
-                                                endwhile;
-                                                    wp_reset_postdata();
-                                                endif;
-                                                ?>
-                                                <a class="btn bp-btn btn-primary text-white"
-                                                    href="<?php echo get_home_url() . '/views-and-news'?>">View All</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="accordion-item border-0">
-                                    <h2 class="accordion-header" id="headingFour">
-                                        <button class="accordion-button collapsed text-uppercase" type="button"
-                                            data-bs-toggle="collapse" data-bs-target="#collapseFour"
-                                            aria-expanded="false" aria-controls="collapseFour">
-                                            People
-                                        </button>
-                                    </h2>
-                                    <div id="collapseFour" class="accordion-collapse collapse"
-                                        aria-labelledby="headingFour" data-bs-parent="#accordion-menu">
-                                        <div class="accordion-body">
-                                            <div class="list-group list-group-light">
-                                                <a href="<?php echo get_home_url() . '/board'?>">
-                                                    <div class="text-primary text-strong">Board of Executive</div>
+                                            </li>
+                                            <?php
+                                        } else {
+                                            ?>
+                                            <li class="nav-item pl-20">
+                                                <a class="bp-nav-link" style="display: block;" href="<?php echo $item_link; ?>">
+                                                    <?php echo $item_label; ?>
                                                 </a>
-                                                <div class="line mt-15 mb-15"></div>
+                                            </li>
+                                            <?php
+                                        }
+                                        ?>
+                                        
+                                    
 
-                                                <a href="<?php echo get_home_url() . '/team'?>">
-                                                    <div class="text-primary text-strong">Meet Our Leadership Team</div>
-                                                </a>
-                                                <div class="line mt-15 mb-15"></div>
+                                        <?php
+                                            }                
+                                        ?>
+                                        <?php
+                                    endwhile;
+                                endif;
 
-                                                <a href="<?php echo get_home_url() . '/departments'?>">
-                                                    <div class="text-primary text-strong">Our Departments</div>
-                                                </a>
-                                                <div class="line mt-15 mb-15"></div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+                                endwhile;
+                                    wp_reset_postdata();
+                                endif;
+                                ?>
 
-                            </div>
-                            <li class="nav-item pl-20">
-                                <a class="bp-nav-link text-uppercase" style="display: block;" href="<?php echo get_home_url() . '/contact'?>">Contact us</a>
-                            </li>
                         </ul>
+
+                        <div class="d-flex align-items-center justify-content-center mt-20">
+                            <a href="https://trade.isabullion.com/" target="_blank"
+                                class="btn bp-btn btn-primary bp-btn-link">Login</a>
+                            <a href="<?php echo get_home_url() . '/signup/lets-get-started'; ?>"
+                                class="btn bp-btn btn-primary ml-10 mr-10">Open account</a>
+                        </div>
+
+                        <div class="d-flex align-items-center justify-content-center mt-40">
+                        <div class="dropdown">
+                                <?php 
+                            $current_language = wpml_get_current_language();
+                        ?>
+                                <button class="btn bp-btn btn-secondary btn-lang-dd bp-dropdown-toggle" type="button"
+                                    data-bs-toggle="dropdown">
+
+                                    <?php echo mb_convert_case($current_language, MB_CASE_TITLE, "UTF-8"); ?>
+                                </button>
+                                <ul class="dropdown-menu bp-btn-dropdown-menu box-shadow">
+                                    <?php wpml_language_switcher(); ?>
+                                </ul>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

@@ -31,7 +31,7 @@ document.addEventListener('DOMContentLoaded', function () {
         }
         const reports = await response.json();
         const events = reports.map((report) => ({
-          title: report.title.rendered,
+          title: 'Daily Report', // replace with 'report.title.rendered' if want the actual post title
           start: report.date,
           className: 'fc-bg-primary',
           allDay: true,

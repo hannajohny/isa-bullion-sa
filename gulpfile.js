@@ -4,7 +4,7 @@ var browserSync = require('browser-sync').create();
 
 gulp.task('watch', () => {
   browserSync.init(null, {
-    proxy: 'localhost:8888/isa-bullion', // 'dev.site.com' in your example
+    proxy: 'localhost:8888/isa-bullion-sa', // 'dev.site.com' in your example
     port: 5000,
   });
   gulp.watch('**/*.php').on('change', () => {
