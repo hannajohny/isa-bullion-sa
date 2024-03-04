@@ -197,8 +197,6 @@ function load_faqs() {
   );
   $posts_loop = new WP_Query( $args );
     $i = 0;
-    $current_language = wpml_get_current_language();
-    $accordion_button_arabic_class = '';
   if ( $posts_loop->have_posts() ) :
         ?>
 <div class="accordion" id="faqs-accordion">
@@ -207,14 +205,7 @@ function load_faqs() {
     ?>
   <div class="accordion-item">
     <h2 class="accordion-header p-0">
-      <?php 
-          if ($current_language == 'ar') { 
-              $accordion_button_arabic_class = 'accordion-button-ar';
-          } else {
-              $accordion_button_arabic_class = '';
-          }
-        ?>
-      <button class="accordion-button collapsed <?php echo $accordion_button_arabic_class; ?>" type="button"
+      <button class="accordion-button collapsed" type="button"
         data-bs-toggle="collapse" data-bs-target="#collapse-<?php echo $i; ?>"
         aria-controls="collapse-<?php echo $i; ?>">
         <?php the_field('question') ?>
