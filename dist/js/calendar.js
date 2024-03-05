@@ -24,7 +24,7 @@ document.addEventListener('DOMContentLoaded', function () {
         const startDate = start.toISOString().split('T')[0];
         const endDate = end.toISOString().split('T')[0];
         const response = await fetch(
-          `${homeUrl}/wp-json/wp/v2/reports?after=${startDate}T00:00:00&before=${endDate}T00:00:00`
+          `${homeUrl}/wp-json/wp/v2/reports?after=${startDate}T00:00:00&before=${endDate}T00:00:00&per_page=100`
         );
         if (!response.ok) {
           throw new Error('Failed to fetch reports');
