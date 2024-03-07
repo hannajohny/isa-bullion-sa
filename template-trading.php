@@ -27,26 +27,33 @@
 </div>
 
 <!-- Featured on -->
-<div class="bg-light">
-    <div class="container pt-80 pb-80">
-        <h3 class="text-center text-large"><?php the_field('featured_section_title'); ?></h3>
-        <div class="row mt-60 align-items-center justify-content-center">
-                <?php
-                if( have_rows('featured_on_logos') ):
-                    while( have_rows('featured_on_logos') ) : the_row();
-                ?>
-                     <div class="col d-flex flex-column align-items-center justify-content-center mb-20">
-                        <div class="company-logo" style="background-image: url('<?php the_sub_field('featured_on_logo'); ?>')">
+<?php 
+    $enable_featured_on = get_field('featured_on_section_enabled');     
+    if ($enable_featured_on) {
+        ?>
+    <div class="bg-light">
+        <div class="container pt-80 pb-80">
+            <h3 class="text-center text-large"><?php the_field('featured_section_title'); ?></h3>
+            <div class="row mt-60 align-items-center justify-content-center">
+                    <?php
+                    if( have_rows('featured_on_logos') ):
+                        while( have_rows('featured_on_logos') ) : the_row();
+                    ?>
+                        <div class="col d-flex flex-column align-items-center justify-content-center mb-20">
+                            <div class="company-logo" style="background-image: url('<?php the_sub_field('featured_on_logo'); ?>')">
+                            </div>
                         </div>
-                    </div>
-                
-                <?php
-                endwhile;
-            endif;
-            ?>
+                    
+                    <?php
+                    endwhile;
+                endif;
+                ?>
+            </div>
         </div>
     </div>
-</div>
+<?php
+    }
+?>
 
 <!-- testimonials -->
 <div class="container pt-80">
