@@ -144,16 +144,24 @@
 </div>
 
 <!-- Trade license -->
-<div class="container pt-80 pb-80">
-    <h1 class="text-large mb-40"><?php the_field('trade_license_section_title'); ?></h1>
-    <p style="max-width: 550px;"><?php the_field('trade_license_description'); ?></p>
-    <div class="d-flex mt-40">
-        <a class="btn bp-btn btn-secondary" type="button" data-bs-toggle="modal"
-            data-bs-target="#view-trade-license">View trade license</a>
-        <a class="btn bp-btn btn-primary ml-20" data-bs-toggle="modal" data-bs-target="#verify-trade-license">Verify
-            us</a>
-    </div>
-</div>
+
+<?php 
+    $enable_featured_on = get_field('trade_license_section_enabled');     
+    if ($enable_featured_on) {
+        ?>
+        <div class="container pt-80 pb-80">
+            <h1 class="text-large mb-40"><?php the_field('trade_license_section_title'); ?></h1>
+            <p style="max-width: 550px;"><?php the_field('trade_license_description'); ?></p>
+            <div class="d-flex mt-40">
+                <a class="btn bp-btn btn-secondary" type="button" data-bs-toggle="modal"
+                    data-bs-target="#view-trade-license">View trade license</a>
+                <a class="btn bp-btn btn-primary ml-20" data-bs-toggle="modal" data-bs-target="#verify-trade-license">Verify
+                    us</a>
+            </div>
+        </div>
+<?php
+    }
+?>
 
 <!-- Modal - View TL -->
 <div class="modal fade" id="view-trade-license" tabindex="-1" aria-hidden="true">
